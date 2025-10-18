@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dini2nxlx2wc6"]
+
+[ext_resource type="Script" uid="uid://dpmkpwya36iba" path="res://scritps/Protagonista.gd" id="1_6skmf"]
+
+[node name="Lobisomen" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_6skmf")
+speed = null
+tempo = null
+pontos = null
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
