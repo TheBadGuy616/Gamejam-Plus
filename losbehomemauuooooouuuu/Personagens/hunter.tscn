@@ -1,3 +1,3 @@
-[gd_scene format=3 uid="uid://dcrii0fiiwgx1"]
+[gd_scene load_steps=0 format=3 uid="uid://dcrii0fiiwgx1"]
 
 [node name="Hunter" type="CharacterBody2D"]
