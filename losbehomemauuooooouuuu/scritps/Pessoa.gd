@@ -56,3 +56,16 @@ func _on_area_deteccao_body_exited(body: Node2D) -> void:
 		lobisomem_alvo = null
 		em_fuga = false
 		print("Pessoa: Seguro por enquanto. Parando de correr.")
+
+
+func _on_ir_de_vala_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+func _on_hurtbox_body_entered(body: Node2D):
+	# Verificação de segurança (usando class_name Lobisomem)
+	if body is Player:
+		print(name, " detectou o Lobisomem. Instakill!")
+		
+		# A Pessoa é o nó raiz deste script, então basta chamar queue_free()
+		queue_free() 
+		# Alternativamente, chame uma função de morte: morrer()
