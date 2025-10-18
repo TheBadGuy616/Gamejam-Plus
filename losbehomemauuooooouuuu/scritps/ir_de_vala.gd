@@ -5,3 +5,4 @@ func _on_body_entered(body: CharacterBody2D):
 		get_tree().queue_free()
 		Globais.points += 1
 		print("Pontos: ", Globais.points)
+	

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Pessoa # Define um nome de classe para facilitar a identificação
+class_name Hunter # Define um nome de classe para facilitar a identificação
 
 # --- Variáveis Exportáveis (ajustáveis no Inspetor) ---
 
@@ -48,20 +48,20 @@ func _on_area_deteccao_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		lobisomem_alvo = body
 		em_fuga = true
-		print("Pessoa: Lobisomem detectado! Fugindo...")
+		print("hunter: Lobisomem detectado! Fugindo...")
 
 func _on_area_deteccao_body_exited(body: Node2D) -> void:
 		# Verifica se o Lobisomem saiu da área de detecção
 	if body == lobisomem_alvo:
 		lobisomem_alvo = null
 		em_fuga = false
-		print("Pessoa: Seguro por enquanto. Parando de correr.")
+		print("Hunter: Seguro por enquanto. Parando de correr.")
 
 
 func _on_ir_de_vala_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		queue_free()
-		Globais.points += 1
+		Globais.points += 3
 		print("Pontos: ", Globais.points)
 		
 
