@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://i7ep8pbh6mtj"]
+
+[ext_resource type="Script" uid="uid://dpmkpwya36iba" path="res://scritps/Protagonista.gd" id="1_clmf5"]
+[ext_resource type="Texture2D" uid="uid://b8py15xu12jgp" path="res://Sprites/lobisomem1.png" id="2_8kssb"]
+
+[node name="Protagonista" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_clmf5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8kssb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)
+position_smoothing_enabled = true

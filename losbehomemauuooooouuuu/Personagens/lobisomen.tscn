@@ -1,23 +1,51 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://dini2nxlx2wc6"]
 
 [ext_resource type="Script" uid="uid://dpmkpwya36iba" path="res://scritps/Protagonista.gd" id="1_6skmf"]
 [ext_resource type="Texture2D" uid="uid://dwx8y6p2yp4ow" path="res://icon.svg" id="2_b5i3l"]
 [ext_resource type="PackedScene" uid="uid://b855ws05qdikb" path="res://Personagens/inimigo_generico.tscn" id="3_1dj07"]
+=======
+[gd_scene load_steps=5 format=3 uid="uid://dini2nxlx2wc6"]
+
+[ext_resource type="Script" uid="uid://dpmkpwya36iba" path="res://scritps/Protagonista.gd" id="1_6skmf"]
+[ext_resource type="Texture2D" uid="uid://b8py15xu12jgp" path="res://Sprites/lobisomem1.png" id="2_6yomp"]
+[ext_resource type="Script" uid="uid://b257rmb4ar1wt" path="res://Personagens/camera.gd" id="3_b5i3l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b5i3l"]
+radius = 114.0
+height = 344.0
+>>>>>>> Stashed changes
 
 [node name="Lobisomen" type="CharacterBody2D" groups=["Player"]]
 motion_mode = 1
 script = ExtResource("1_6skmf")
+<<<<<<< Updated upstream
+=======
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6yomp")
+>>>>>>> Stashed changes
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+<<<<<<< Updated upstream
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_b5i3l")
+=======
+position = Vector2(24, 21)
+shape = SubResource("CapsuleShape2D_b5i3l")
+>>>>>>> Stashed changes
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_b5i3l")
 
 [node name="Pessoa" parent="." instance=ExtResource("3_1dj07")]
 position = Vector2(470, 133)
