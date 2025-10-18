@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct5eskt20i41"]
+
+[ext_resource type="PackedScene" uid="uid://cs131rjs3t6qf" path="res://Personagens/testes_pontos.tscn" id="1_ab28t"]
+[ext_resource type="PackedScene" uid="uid://i7ep8pbh6mtj" path="res://Personagens/protagonista.tscn" id="2_ynais"]
+[ext_resource type="PackedScene" uid="uid://b855ws05qdikb" path="res://Personagens/inimigo_generico.tscn" id="3_ynais"]
+
+[node name="Cena teste" type="Node2D"]
+
+[node name="testes Pontos" parent="." instance=ExtResource("1_ab28t")]
+position = Vector2(620, 208)
+
+[node name="Protagonista" parent="." instance=ExtResource("2_ynais")]
+position = Vector2(-202, 185)
+
+[node name="Pessoa" parent="." instance=ExtResource("3_ynais")]
+position = Vector2(365, -390)

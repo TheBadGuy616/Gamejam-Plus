@@ -42,24 +42,17 @@ func _physics_process(delta):
 # ou esteja em um grupo chamado "lobo" para a detecção funcionar corretamente.
 
 # Conecte o sinal 'body_entered' do nó 'AreaDeDeteccao' a esta função
-func _on_area_de_deteccao_body_entered(body: CharacterBody2D):
+
+func _on_area_deteccao_body_entered(body: Node2D) -> void:
 	# Verifica se o corpo que entrou é o Lobisomem
 	if body.is_in_group("Player"):
 		lobisomem_alvo = body
 		em_fuga = true
 		print("Pessoa: Lobisomem detectado! Fugindo...")
 
-# Conecte o sinal 'body_exited' do nó 'AreaDeDeteccao' a esta função
-func _on_area_de_deteccao_body_exited(body: CharacterBody2D):
-	# Verifica se o Lobisomem saiu da área de detecção
+func _on_area_deteccao_body_exited(body: Node2D) -> void:
+		# Verifica se o Lobisomem saiu da área de detecção
 	if body == lobisomem_alvo:
 		lobisomem_alvo = null
 		em_fuga = false
 		print("Pessoa: Seguro por enquanto. Parando de correr.")
-
-func _on_area_deteccao_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-
-
-func _on_area_deteccao_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.

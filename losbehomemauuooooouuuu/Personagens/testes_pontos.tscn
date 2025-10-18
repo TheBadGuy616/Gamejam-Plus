@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs131rjs3t6qf"]
+
+[ext_resource type="Texture2D" uid="uid://ct2dwc1kmxecy" path="res://Sprites/pessoa1.png" id="1_7rih5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oqxxg"]
+radius = 82.0
+height = 270.0
+
+[node name="testes Pontos" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7rih5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(13, 45)
+shape = SubResource("CapsuleShape2D_oqxxg")
