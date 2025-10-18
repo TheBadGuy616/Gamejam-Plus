@@ -20,4 +20,4 @@ func _on_timer_timeout() -> void:
 	pass
 	
 func on_enemy_death():
-	
+	pass
