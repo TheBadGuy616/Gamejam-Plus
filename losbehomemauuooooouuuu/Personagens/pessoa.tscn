@@ -29,6 +29,7 @@ shape = SubResource("CapsuleShape2D_v5cb8")
 [node name="AreaDeteccao" type="Area2D" parent="."]
 
 [node name="DeteccaoShape" type="CollisionShape2D" parent="AreaDeteccao"]
+visible = false
 position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_3rpey")
 

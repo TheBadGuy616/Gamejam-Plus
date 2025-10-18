@@ -1,25 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3vxxffyxcukl"]
+[gd_scene load_steps=4 format=3 uid="uid://d3vxxffyxcukl"]
 
 [ext_resource type="PackedScene" uid="uid://ci4s14t2b6obg" path="res://Cenario/trap.tscn" id="2_ab28t"]
 [ext_resource type="PackedScene" uid="uid://i7ep8pbh6mtj" path="res://Personagens/protagonista.tscn" id="2_ynais"]
+[ext_resource type="PackedScene" uid="uid://b855ws05qdikb" path="res://Personagens/pessoa.tscn" id="3_ynais"]
 
 [node name="Cena teste" type="Node2D"]
 
 [node name="Protagonista" parent="." instance=ExtResource("2_ynais")]
 position = Vector2(-202, 185)
 
-[node name="Pessoa" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(365, -390)
-script = null
-
 [node name="Trap" parent="." instance=ExtResource("2_ab28t")]
 position = Vector2(722, 189)
+
+[node name="Pessoa" parent="." instance=ExtResource("3_ynais")]
+position = Vector2(416, 1014)

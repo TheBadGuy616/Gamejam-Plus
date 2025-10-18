@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-@export var speed = 400
+@export var speed = 800
 @export var tempo = 10
 @export var pontos = 0
 
