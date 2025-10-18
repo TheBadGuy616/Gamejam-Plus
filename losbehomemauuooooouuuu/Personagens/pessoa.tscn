@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b855ws05qdikb"]
+
+[ext_resource type="Script" uid="uid://bmq6dus63p7af" path="res://scritps/Pessoa.gd" id="1_pfggf"]
+[ext_resource type="Texture2D" uid="uid://ct2dwc1kmxecy" path="res://Sprites/pessoa1.png" id="2_5a7ko"]
+[ext_resource type="Script" uid="uid://cx53s3lx7r3q3" path="res://Personagens/ir_de_vala.gd" id="3_v5cb8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v5cb8"]
+radius = 59.0
+height = 243.97588
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3rpey"]
+radius = 1813.2755
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4n850"]
+radius = 496.14777
+height = 992.29553
+
+[node name="Pessoa" type="CharacterBody2D"]
+script = ExtResource("1_pfggf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5a7ko")
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, 32.000004)
+scale = Vector2(1.2985715, 1.1066667)
+shape = SubResource("CapsuleShape2D_v5cb8")
+
+[node name="AreaDeteccao" type="Area2D" parent="."]
+
+[node name="DeteccaoShape" type="CollisionShape2D" parent="AreaDeteccao"]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_3rpey")
+
+[node name="IrDeVala" type="Area2D" parent="."]
+scale = Vector2(3.9200003, 1)
+collision_layer = 0
+script = ExtResource("3_v5cb8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IrDeVala"]
+position = Vector2(3.8265305, 31)
+scale = Vector2(0.09049311, 0.3564177)
+shape = SubResource("CapsuleShape2D_4n850")
+
+[connection signal="body_entered" from="AreaDeteccao" to="." method="_on_area_deteccao_body_entered"]
+[connection signal="body_exited" from="AreaDeteccao" to="." method="_on_area_deteccao_body_exited"]

@@ -3,7 +3,7 @@ class_name Pessoa # Define um nome de classe para facilitar a identificação
 
 # --- Variáveis Exportáveis (ajustáveis no Inspetor) ---
 
-@export var velocidade_fuga: float = 250.0 # Velocidade alta para fuga
+@export var velocidade_fuga: float = 300.0 # Velocidade alta para fuga
 @export var velocidade_ociosa: float = 0.0 # Movimento quando não vê o Lobisomem
 
 # --- Variáveis de Estado ---
