@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://i7ep8pbh6mtj"]
+[gd_scene load_steps=11 format=3 uid="uid://i7ep8pbh6mtj"]
 
 [ext_resource type="Script" uid="uid://dpmkpwya36iba" path="res://scritps/Protagonista.gd" id="1_clmf5"]
 [ext_resource type="Texture2D" uid="uid://c4lvfrsvjp3es" path="res://Assets/lobisomem1.png" id="2_3nmcy"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://4jeiceskytu8" path="res://Assets/lobisomem2.png" id="3_12cde"]
 [ext_resource type="Texture2D" uid="uid://bs1p45y2mwume" path="res://Assets/lobisomem5.png" id="3_f8tt1"]
 [ext_resource type="Texture2D" uid="uid://bsjejekqnub5w" path="res://Assets/lobisomem3.png" id="4_md4yh"]
+[ext_resource type="AudioStream" uid="uid://c75uqlke6d3bx" path="res://Assets/14_human_death_spin.wav" id="8_f8tt1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f8tt1"]
 animations = [{
@@ -75,5 +76,9 @@ theme_override_font_sizes/font_size = 120
 [node name="PontosLabel" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_f8tt1")
+volume_db = 24.0
 
 [connection signal="timeout" from="VidaTimer" to="." method="_on_vida_timer_timeout"]

@@ -76,6 +76,9 @@ func _on_ir_de_vala_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		await get_tree().process_frame
 		$CollisionShape2D.disabled = true
+		if body.has_node("Sprite2D"):
+			var lobisomem_sprite = body.get_node("Sprite2D")
+			lobisomem_sprite.play("Matando")
 		Globais.registrar_abate_e_pontos(3)
 		animacao_sprite.play("Morrendo")
 		await animacao_sprite.animation_finished

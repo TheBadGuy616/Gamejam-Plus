@@ -15,6 +15,7 @@ extends CharacterBody2D
 @onready var vida_timer = $VidaTimer
 @onready var pontos_label = $PontosLabel
 @onready var animacao_sprite = $Sprite2D
+@onready var atacando_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 var tempo_vida_inicial: float = 0.0
 
 var current_speed_modifier: float = 1.0
@@ -22,6 +23,7 @@ var current_max_speed: float
 var last_checked_points: int = 0
 var current_level: int = 0
 var can_move = true
+var atacando = false
 
 func _ready():
 	# Inicializa a velocidade máxima com a velocidade base
@@ -79,6 +81,9 @@ func _physics_process(delta):
 	if velocity.x != 0:
 		animacao_sprite.flip_h = velocity.x < 0
 	
+	if animacao_sprite.animation == "Matando" and animacao_sprite.is_playing() and not atacando:
+		atacando_sfx.play()
+		atacando = 0
 	
 	move_and_slide()
 
