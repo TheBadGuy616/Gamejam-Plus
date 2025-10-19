@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://c72n7km8qre1u"]
 
 [ext_resource type="Texture2D" uid="uid://c1r0kqc3otrf4" path="res://Sprites/placeHolders/WhatsApp Image 2025-10-18 at 07.52.49.jpeg" id="1_ri0ax"]
-[ext_resource type="Script" uid="uid://ci2tgi1yo7lld" path="res://Interfaces/menu_iniciar.gd" id="1_x65mq"]
+[ext_resource type="Script" uid="uid://ci2tgi1yo7lld" path="res://scritps/menu_iniciar.gd" id="1_x65mq"]
 [ext_resource type="Texture2D" uid="uid://d4jct0nfnqhug" path="res://Sprites/placeHolders/LosbeHomem - Logo.png" id="2_fpcjo"]
 [ext_resource type="FontFile" uid="uid://dfp886wjxurnh" path="res://Assets/Minecraftia-Regular.ttf" id="3_x65mq"]
-[ext_resource type="Script" uid="uid://bj6d1c1xytdq0" path="res://Interfaces/sair.gd" id="5_87rq4"]
+[ext_resource type="Script" uid="uid://bj6d1c1xytdq0" path="res://scritps/sair.gd" id="5_87rq4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x65mq"]
 bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)

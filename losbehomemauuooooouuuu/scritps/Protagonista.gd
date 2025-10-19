@@ -144,4 +144,4 @@ func _on_stun_timer_timeout():
 func _on_vida_timer_timeout():
 	print("O tempo acabou! Jogador Morreu.")
 	queue_free()
-	get_tree().change_scene_to_file("res://Interfaces/menuIniciar.tscn")
+	get_tree().change_scene_to_file("res://Interfaces/pontuacaoFinal.tscn")
