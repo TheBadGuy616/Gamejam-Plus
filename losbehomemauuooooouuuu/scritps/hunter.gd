@@ -9,12 +9,17 @@ class_name Hunter
 @onready var pivo_arma = $PivoArma
 @onready var ponto_de_disparo = $PivoArma/PontoDeDisparo
 
+@onready var animacao_sprite = $AnimatedSprite2D
+@onready var animacao_arma = $PivoArma/AnimatedSprite2D_Arma
+
 var em_fuga: bool = false
 var jogador_em_mira: bool = false
 var lobisomem_alvo: CharacterBody2D = null
 
 func _ready() -> void:
 	timer_de_disparo.timeout.connect(_on_timer_tiros_timeout)
+	animacao_arma.animation_finished.connect(_on_animacao_arma_finished)
+	animacao_arma.play("Normal")
 
 func _physics_process(delta):
 	var direcao_movimento = Vector2.ZERO
@@ -28,6 +33,8 @@ func _physics_process(delta):
 		var vetor_para_alvo = lobisomem_alvo.global_position - global_position
 		direcao_movimento = -vetor_para_alvo.normalized()
 		velocidade_atual = velocidade_fuga
+		if direcao_movimento.x != 0:
+			animacao_sprite.flip_h = direcao_movimento.x < 0
 	
 	velocity = direcao_movimento * velocidade_atual
 	move_and_slide()
@@ -36,6 +43,7 @@ func _on_area_deteccao_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		lobisomem_alvo = body
 		em_fuga = true
+		animacao_sprite.play("Fugindo")
 
 func _on_area_deteccao_body_exited(body: Node2D) -> void:
 	if body == lobisomem_alvo:
@@ -43,6 +51,7 @@ func _on_area_deteccao_body_exited(body: Node2D) -> void:
 		em_fuga = false
 		jogador_em_mira = false 
 		timer_de_disparo.stop()
+		animacao_sprite.play("Normal")
 
 func _on_alcance_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
@@ -102,3 +111,36 @@ func _on_timer_tiros_timeout() -> void:
 	
 	if bala.has_method("set_direcao"):
 		bala.set_direcao(direcao)
+		
+	if projectile_scene == null:
+		print("FALHA: projectile_scene está nula.")
+		return
+
+	if not jogador_em_mira or not is_instance_valid(lobisomem_alvo):
+		print("FALHA: Jogador fora de mira ou alvo inválido.")
+		return
+	print("SUCESSO: Todas as condições OK. Disparando!")
+	executar_disparo()
+
+func executar_disparo():
+	
+	# 1. INICIA A ANIMAÇÃO DE TIRO
+	animacao_arma.play("Tiro")
+
+	# 2. Lógica de Instanciação do Projétil (Tirada do seu _on_timer_tiros_timeout)
+	var bala = projectile_scene.instantiate()
+	get_parent().add_child(bala)
+	
+	bala.global_position = ponto_de_disparo.global_position
+	
+	var direcao = (lobisomem_alvo.global_position - ponto_de_disparo.global_position).normalized()
+	
+	bala.rotation = direcao.angle()
+	
+	if bala.has_method("set_direcao"):
+		bala.set_direcao(direcao)
+
+func _on_animacao_arma_finished():
+	# Verifica se a animação que terminou é a de tiro (muito importante)
+	if animacao_arma.animation == "Tiro":
+		animacao_arma.play("Normal")

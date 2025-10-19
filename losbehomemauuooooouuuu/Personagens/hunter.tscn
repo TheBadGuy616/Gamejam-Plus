@@ -1,9 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcrii0fiiwgx1"]
+[gd_scene load_steps=14 format=3 uid="uid://dcrii0fiiwgx1"]
 
 [ext_resource type="Script" uid="uid://bg6elgbhulbou" path="res://scritps/hunter.gd" id="1_2v8wb"]
 [ext_resource type="Texture2D" uid="uid://yt3pstvsqhkn" path="res://Sprites/cacador1.png" id="1_xloyb"]
 [ext_resource type="PackedScene" uid="uid://b25pn5fidyfbk" path="res://Personagens/bala.tscn" id="2_p7ykj"]
+[ext_resource type="Texture2D" uid="uid://d1dfm5wgo0teq" path="res://Sprites/cacador3.png" id="3_0tbwm"]
+[ext_resource type="Texture2D" uid="uid://y6xgiu5a3buh" path="res://Sprites/cacador4.png" id="4_dkmhg"]
 [ext_resource type="Texture2D" uid="uid://yhl5kemxgajc" path="res://Sprites/arma1.png" id="4_p7ykj"]
+[ext_resource type="Texture2D" uid="uid://d4f3sj7ep02m1" path="res://Sprites/arma2.png" id="7_dkmhg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d8w1q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0tbwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dkmhg")
+}],
+"loop": true,
+"name": &"Fugindo",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xloyb")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 1.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p7ykj"]
 radius = 70.161285
@@ -19,12 +44,36 @@ radius = 634.20184
 [sub_resource type="CircleShape2D" id="CircleShape2D_gi76f"]
 radius = 2423.2979
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_iurfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_p7ykj")
+}],
+"loop": true,
+"name": &"Normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_dkmhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_p7ykj")
+}],
+"loop": false,
+"name": &"Tiro",
+"speed": 4.0
+}]
+
 [node name="Hunter" type="CharacterBody2D" groups=["Inimigos"]]
 script = ExtResource("1_2v8wb")
 projectile_scene = ExtResource("2_p7ykj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_xloyb")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d8w1q")
+animation = &"Fugindo"
+autoplay = "parado"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(17.000002, 42)
@@ -32,6 +81,7 @@ scale = Vector2(1.2400001, 1.3600004)
 shape = SubResource("CapsuleShape2D_p7ykj")
 
 [node name="IrDeVala" type="Area2D" parent="."]
+visible = false
 scale = Vector2(3.9200003, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IrDeVala"]
@@ -46,15 +96,20 @@ position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_2v8wb")
 
 [node name="Alcance" type="Area2D" parent="."]
+visible = false
 
 [node name="Alcanace" type="CollisionShape2D" parent="Alcance"]
 shape = SubResource("CircleShape2D_gi76f")
 
 [node name="PivoArma" type="Node2D" parent="."]
 
-[node name="Arma" type="Sprite2D" parent="PivoArma"]
+[node name="AnimatedSprite2D_Arma" type="AnimatedSprite2D" parent="PivoArma"]
 position = Vector2(15, 70)
-texture = ExtResource("4_p7ykj")
+sprite_frames = SubResource("SpriteFrames_iurfw")
+animation = &"Tiro"
+autoplay = "Normal"
+frame = 1
+frame_progress = 1.0
 offset = Vector2(75, -51)
 
 [node name="PontoDeDisparo" type="Marker2D" parent="PivoArma"]
