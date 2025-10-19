@@ -48,27 +48,26 @@ func _on_area_deteccao_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		lobisomem_alvo = body
 		em_fuga = true
-		print("Pessoa: Lobisomem detectado! Fugindo...")
+		#print("Pessoa: Lobisomem detectado! Fugindo...")
 
 func _on_area_deteccao_body_exited(body: Node2D) -> void:
 		# Verifica se o Lobisomem saiu da área de detecção
 	if body == lobisomem_alvo:
 		lobisomem_alvo = null
 		em_fuga = false
-		print("Pessoa: Seguro por enquanto. Parando de correr.")
+		#print("Pessoa: Seguro por enquanto. Parando de correr.")
 
 
 func _on_ir_de_vala_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		queue_free()
 		Globais.points += 1
-		print("Pontos: ", Globais.points)
-		
+		#print("Pontos: ", Globais.points)
 
 func _on_hurtbox_body_entered(body: Node2D):
 	# Verificação de segurança (usando class_name Lobisomem)
 	if body is Player:
-		print(name, " detectou o Lobisomem. Instakill!")
+		#print(name, " detectou o Lobisomem. Instakill!")
 		
 		# A Pessoa é o nó raiz deste script, então basta chamar queue_free()
 		queue_free() 

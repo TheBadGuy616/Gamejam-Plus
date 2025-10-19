@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cllsantits3yt"]
+
+[ext_resource type="Script" uid="uid://bn0xre4pyqmej" path="res://cENARIO/moita.gd" id="1_oh7ih"]
+[ext_resource type="Texture2D" uid="uid://5jvdk6fd200q" path="res://Assets/arbusto1.png" id="2_hat5f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kr7ww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hat5f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kc5ik"]
+radius = 111.0
+
+[node name="moita" type="Node2D" groups=["Obstaculo"]]
+position = Vector2(4, -1)
+scale = Vector2(2, 2)
+script = ExtResource("1_oh7ih")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kr7ww")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Obstaculo"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(10, 32)
+scale = Vector2(1, 0.59999907)
+shape = SubResource("CircleShape2D_kc5ik")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

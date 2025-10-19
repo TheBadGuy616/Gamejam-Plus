@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bu2y2fsg7wqkn" path="res://Base/inimigo.gd" id="1_v845p"]
 
-[node name="Inimigo" type="CharacterBody2D"]
+[node name="Inimigo" type="CharacterBody2D" groups=["Inimigos", "Ininimigos"]]
 script = ExtResource("1_v845p")
 velocidade = null
 

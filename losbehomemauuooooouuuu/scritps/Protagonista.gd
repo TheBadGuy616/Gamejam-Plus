@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export var accel = 600
 @export var friction = 200
 
+var current_speed_modifier: float = 1.0
 var current_max_speed: float
 var last_checked_points: int = 0
 	
@@ -55,6 +56,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		velocity.y = 0
+		
+	
+	
 	move_and_slide()
 
 
@@ -62,8 +66,11 @@ func _on_timer_timeout() -> void:
 	#get_tree().change_scene_to_file()
 	pass
 	
-func on_enemy_death():
-	pass
+func apply_slow(factor: float):
+	current_speed_modifier = factor
+	
+func remove_slow():
+	current_speed_modifier = 1.0
 
 func stop_movement_for_duration(duration:float):
 	if can_move == false:

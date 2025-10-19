@@ -27,3 +27,5 @@ window/size/resizable=false
 [global_group]
 
 Player=""
+Inimigos=""
+Obstaculo=""

@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcrii0fiiwgx1"]
+[gd_scene load_steps=8 format=3 uid="uid://dcrii0fiiwgx1"]
 
-[ext_resource type="Script" path="res://scritps/hunter.gd" id="1_2v8wb"]
+[ext_resource type="Script" uid="uid://bg6elgbhulbou" path="res://scritps/hunter.gd" id="1_2v8wb"]
 [ext_resource type="Texture2D" uid="uid://yt3pstvsqhkn" path="res://Sprites/cacador1.png" id="1_xloyb"]
-[ext_resource type="Script" path="res://Personagens/ir_de_vala.gd" id="2_2v8wb"]
 [ext_resource type="Texture2D" uid="uid://yhl5kemxgajc" path="res://Sprites/arma1.png" id="4_p7ykj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p7ykj"]
@@ -19,7 +18,7 @@ radius = 634.20184
 [sub_resource type="CircleShape2D" id="CircleShape2D_gi76f"]
 radius = 2423.2979
 
-[node name="Hunter" type="CharacterBody2D"]
+[node name="Hunter" type="CharacterBody2D" groups=["Inimigos"]]
 script = ExtResource("1_2v8wb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -32,7 +31,6 @@ shape = SubResource("CapsuleShape2D_p7ykj")
 
 [node name="IrDeVala" type="Area2D" parent="."]
 scale = Vector2(3.9200003, 1)
-script = ExtResource("2_2v8wb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IrDeVala"]
 position = Vector2(3.8265305, 31)
@@ -45,16 +43,27 @@ shape = SubResource("CapsuleShape2D_gi76f")
 position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_2v8wb")
 
-[node name="Arma" type="Sprite2D" parent="."]
-position = Vector2(15, 70)
-texture = ExtResource("4_p7ykj")
-offset = Vector2(75, -51)
-
 [node name="Alcance" type="Area2D" parent="."]
 
 [node name="Alcanace" type="CollisionShape2D" parent="Alcance"]
 shape = SubResource("CircleShape2D_gi76f")
 
+[node name="PivoArma" type="Node2D" parent="."]
+
+[node name="Arma" type="Sprite2D" parent="PivoArma"]
+position = Vector2(15, 70)
+texture = ExtResource("4_p7ykj")
+offset = Vector2(75, -51)
+
+[node name="PontoDeDisparo" type="Marker2D" parent="PivoArma"]
+
+[node name="TimerDeDisparo" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
 [connection signal="body_entered" from="IrDeVala" to="." method="_on_ir_de_vala_body_entered"]
 [connection signal="body_entered" from="AreaDeteccao" to="." method="_on_area_deteccao_body_entered"]
 [connection signal="body_exited" from="AreaDeteccao" to="." method="_on_area_deteccao_body_exited"]
+[connection signal="body_entered" from="Alcance" to="." method="_on_alcance_body_entered"]
+[connection signal="body_exited" from="Alcance" to="." method="_on_alcance_body_exited"]
+[connection signal="timeout" from="TimerDeDisparo" to="." method="_on_timer_tiros_timeout"]
