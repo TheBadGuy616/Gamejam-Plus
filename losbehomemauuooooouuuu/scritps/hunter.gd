@@ -46,33 +46,51 @@ func _on_area_deteccao_body_exited(body: Node2D) -> void:
 
 func _on_alcance_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		print("DEBUG: Jogador ENTROU no Alcance.")
 		lobisomem_alvo = body
 		jogador_em_mira = true
 		em_fuga = false
 		timer_de_disparo.start()
+		print("DEBUG: Timer de Disparo INICIADO.")
 
 func _on_alcance_body_exited(body: Node2D) -> void:
 	if body == lobisomem_alvo:
+		print("DEBUG: Jogador SAIU do Alcance.")
 		jogador_em_mira = false
 		timer_de_disparo.stop()
+		print("DEBUG: Timer de Disparo PARADO.")
 		
 		if is_instance_valid(lobisomem_alvo):
 			em_fuga = true
 
 func _on_ir_de_vala_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		Globais.registrar_abate_e_pontos(3)
 		queue_free()
-		Globais.points += 3
 
 func _on_hurtbox_body_entered(body: Node2D):
 	if body is Player:
+		Globais.registrar_abate_e_pontos(1)
+		print(name, " detectou o Lobisomem. Instakill!")
 		queue_free()
 
 
 func _on_timer_tiros_timeout() -> void:
-	if projectile_scene == null or not jogador_em_mira or not is_instance_valid(lobisomem_alvo):
+	print("DEBUG: Timer TIMEOUT. Checando condições...")
+
+	if projectile_scene == null:
+		print("    FALHA: projectile_scene está nula. (Arraste Bala.tscn para o Inspetor do Hunter)")
 		return
 
+	if not jogador_em_mira:
+		print("    FALHA: jogador_em_mira é false.")
+		return
+		
+	if not is_instance_valid(lobisomem_alvo):
+		print("    FALHA: lobisomem_alvo não é mais válido.")
+		return
+		
+	print("    SUCESSO: Todas as condições OK. Disparando!")
 	var bala = projectile_scene.instantiate()
 	get_parent().add_child(bala)
 	
@@ -84,4 +102,3 @@ func _on_timer_tiros_timeout() -> void:
 	
 	if bala.has_method("set_direcao"):
 		bala.set_direcao(direcao)
-	

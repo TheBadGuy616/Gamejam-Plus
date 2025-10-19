@@ -60,9 +60,8 @@ func _on_area_deteccao_body_exited(body: Node2D) -> void:
 
 func _on_ir_de_vala_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		Globais.registrar_abate_e_pontos(1)
 		queue_free()
-		Globais.points += 1
-		#print("Pontos: ", Globais.points)
 
 func _on_hurtbox_body_entered(body: Node2D):
 	# Verificação de segurança (usando class_name Lobisomem)

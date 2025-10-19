@@ -12,9 +12,6 @@
 [node name="Protagonista" parent="." instance=ExtResource("2_ynais")]
 position = Vector2(-202, 185)
 
-[node name="Trap" parent="." instance=ExtResource("2_ab28t")]
-position = Vector2(722, 189)
-
 [node name="Spawn manager" type="Node" parent="." node_paths=PackedStringArray("player_node")]
 script = ExtResource("5_50uir")
 enemy_scenes = Array[PackedScene]([ExtResource("4_q1lyw"), ExtResource("4_q1lyw"), ExtResource("3_ynais"), ExtResource("3_ynais"), ExtResource("3_ynais"), ExtResource("2_ab28t"), ExtResource("6_vpr83")])
@@ -29,5 +26,11 @@ autostart = true
 
 [node name="DifficultyTimer" type="Timer" parent="Spawn manager"]
 wait_time = 30.0
+
+[node name="Pessoa" parent="." instance=ExtResource("3_ynais")]
+position = Vector2(-1223, 142)
+
+[node name="Pessoa2" parent="." instance=ExtResource("3_ynais")]
+position = Vector2(857, 120)
 
 [connection signal="timeout" from="Spawn manager/SpawnTimer" to="Spawn manager" method="_on_spawn_timer_timeout"]

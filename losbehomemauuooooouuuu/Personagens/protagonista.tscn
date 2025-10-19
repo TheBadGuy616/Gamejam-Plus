@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://i7ep8pbh6mtj"]
+[gd_scene load_steps=5 format=3 uid="uid://i7ep8pbh6mtj"]
 
 [ext_resource type="Script" uid="uid://dpmkpwya36iba" path="res://scritps/Protagonista.gd" id="1_clmf5"]
 [ext_resource type="Texture2D" uid="uid://b8py15xu12jgp" path="res://Sprites/lobisomem1.png" id="2_8kssb"]
+[ext_resource type="FontFile" uid="uid://dfp886wjxurnh" path="res://Assets/Minecraftia-Regular.ttf" id="3_8kssb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_clmf5"]
 radius = 103.0
 height = 368.0
 
-[node name="Protagonista" type="CharacterBody2D" groups=["Player"]]
+[node name="Protagonista" type="CharacterBody2D" node_paths=PackedStringArray("vida_label") groups=["Player"]]
 script = ExtResource("1_clmf5")
+vida_label = NodePath("VidaLabel")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_8kssb")
@@ -21,3 +23,17 @@ shape = SubResource("CapsuleShape2D_clmf5")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
+
+[node name="VidaTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="VidaLabel" type="Label" parent="."]
+offset_left = 2135.0
+offset_top = -1747.0
+offset_right = 3232.0
+offset_bottom = -1510.0
+theme_override_fonts/font = ExtResource("3_8kssb")
+theme_override_font_sizes/font_size = 120
+
+[connection signal="timeout" from="VidaTimer" to="." method="_on_vida_timer_timeout"]

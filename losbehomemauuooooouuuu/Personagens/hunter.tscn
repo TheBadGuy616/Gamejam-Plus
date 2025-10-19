@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcrii0fiiwgx1"]
+[gd_scene load_steps=9 format=3 uid="uid://dcrii0fiiwgx1"]
 
 [ext_resource type="Script" uid="uid://bg6elgbhulbou" path="res://scritps/hunter.gd" id="1_2v8wb"]
 [ext_resource type="Texture2D" uid="uid://yt3pstvsqhkn" path="res://Sprites/cacador1.png" id="1_xloyb"]
+[ext_resource type="PackedScene" uid="uid://b25pn5fidyfbk" path="res://Personagens/bala.tscn" id="2_p7ykj"]
 [ext_resource type="Texture2D" uid="uid://yhl5kemxgajc" path="res://Sprites/arma1.png" id="4_p7ykj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p7ykj"]
@@ -20,6 +21,7 @@ radius = 2423.2979
 
 [node name="Hunter" type="CharacterBody2D" groups=["Inimigos"]]
 script = ExtResource("1_2v8wb")
+projectile_scene = ExtResource("2_p7ykj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_xloyb")
@@ -59,7 +61,6 @@ offset = Vector2(75, -51)
 
 [node name="TimerDeDisparo" type="Timer" parent="."]
 wait_time = 1.5
-autostart = true
 
 [connection signal="body_entered" from="IrDeVala" to="." method="_on_ir_de_vala_body_entered"]
 [connection signal="body_entered" from="AreaDeteccao" to="." method="_on_area_deteccao_body_entered"]
