@@ -24,6 +24,8 @@ func set_direcao(nova_direcao: Vector2) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		if body.has_method("receber_dano_tempo"):
+			body.receber_dano_tempo()
 		queue_free()
 	
 	elif body.is_in_group("Obstaculo"):

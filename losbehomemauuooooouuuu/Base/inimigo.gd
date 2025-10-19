@@ -9,7 +9,6 @@ extends CharacterBody2D
 var start_position : Vector2
 var protagonista_ref = null
 
-
 func _ready() -> void:
 	start_position = global_position
 	nav_agent.target_reached.connect(_on_target_reached)

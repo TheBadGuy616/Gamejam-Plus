@@ -10,6 +10,7 @@ height = 368.0
 
 [node name="Protagonista" type="CharacterBody2D" node_paths=PackedStringArray("vida_label") groups=["Player"]]
 script = ExtResource("1_clmf5")
+base_speed = 600.0
 vida_label = NodePath("VidaLabel")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

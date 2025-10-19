@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var base_friction = 200       # Novo: Adicione a fricção base
 @export var friction_increase = 50.0
 @export var nivel_limite = 5          # Quantos pontos para subir de nível
-@export var dano_tempo_recebido : float = 5.0
+@export var dano_tempo_recebido = 2
 @export var tempo = 10
 @export var pontos = 0
 @export var accel = 600
@@ -18,7 +18,6 @@ var tempo_vida_inicial: float = 0.0
 var current_speed_modifier: float = 1.0
 var current_max_speed: float
 var last_checked_points: int = 0
-	
 var current_level: int = 0
 var can_move = true
 
@@ -32,7 +31,7 @@ func _ready():
 		print("ERRO: Nó do Timer de Vida não encontrado no Player.")
 	
 	if vida_label != null and vida_timer != null:
-		vida_label.text = "%.2f" % vida_timer.wait_time
+		vida_label.text = "%.3f" % vida_timer.wait_time
 	elif vida_label == null:
 		print("AVISO: 'Vida Label' não foi linkada no Inspetor do Player.")
 
@@ -72,8 +71,6 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity.y = 0
 		
-	
-	
 	move_and_slide()
 
 func _process(delta):
@@ -82,12 +79,12 @@ func _process(delta):
 			if vida_timer.time_left == 0.0:
 				vida_label.text = "0.00"
 		else:
-			vida_label.text = "%.2f" % vida_timer.time_left
+			vida_label.text = "%.3f" % vida_timer.time_left
 
 func receber_dano_tempo():
 	if vida_timer == null or (vida_timer.is_stopped() and vida_timer.time_left == 0.0):
 		return
-
+	
 	vida_timer.stop()
 	var novo_tempo_restante = vida_timer.time_left - dano_tempo_recebido
 	print("Player atingido! Tempo restante: ", novo_tempo_restante)
@@ -110,7 +107,7 @@ func _on_globais_abate_registrado():
 	vida_timer.start()
 	
 	if vida_label != null:
-		vida_label.text = "%.2f" % tempo_vida_inicial
+		vida_label.text = "%.3f" % tempo_vida_inicial
 
 func apply_slow(factor: float):
 	current_speed_modifier = factor
@@ -140,3 +137,4 @@ func _on_stun_timer_timeout():
 func _on_vida_timer_timeout():
 	print("O tempo acabou! Jogador Morreu.")
 	queue_free()
+	get_tree().quit()
