@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bmq6dus63p7af" path="res://scritps/Pessoa.gd" id="1_pfggf"]
 [ext_resource type="Texture2D" uid="uid://ct2dwc1kmxecy" path="res://Sprites/pessoa1.png" id="2_5a7ko"]
-[ext_resource type="Script" uid="uid://cx53s3lx7r3q3" path="res://scritps/ir_de_vala.gd" id="3_v5cb8"]
+[ext_resource type="Script" path="res://Personagens/ir_de_vala.gd" id="3_v5cb8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v5cb8"]
 radius = 59.0
@@ -29,7 +29,6 @@ shape = SubResource("CapsuleShape2D_v5cb8")
 [node name="AreaDeteccao" type="Area2D" parent="."]
 
 [node name="DeteccaoShape" type="CollisionShape2D" parent="AreaDeteccao"]
-visible = false
 position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_3rpey")
 

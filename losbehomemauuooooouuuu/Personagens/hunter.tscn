@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcrii0fiiwgx1"]
+[gd_scene load_steps=9 format=3 uid="uid://dcrii0fiiwgx1"]
 
-[ext_resource type="Script" uid="uid://bg6elgbhulbou" path="res://scritps/hunter.gd" id="1_2v8wb"]
+[ext_resource type="Script" path="res://scritps/hunter.gd" id="1_2v8wb"]
 [ext_resource type="Texture2D" uid="uid://yt3pstvsqhkn" path="res://Sprites/cacador1.png" id="1_xloyb"]
-[ext_resource type="Script" uid="uid://cx53s3lx7r3q3" path="res://scritps/ir_de_vala.gd" id="2_2v8wb"]
+[ext_resource type="Script" path="res://Personagens/ir_de_vala.gd" id="2_2v8wb"]
+[ext_resource type="Texture2D" uid="uid://yhl5kemxgajc" path="res://Sprites/arma1.png" id="4_p7ykj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p7ykj"]
 radius = 70.161285
@@ -14,6 +15,9 @@ height = 992.29553
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2v8wb"]
 radius = 634.20184
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gi76f"]
+radius = 2423.2979
 
 [node name="Hunter" type="CharacterBody2D"]
 script = ExtResource("1_2v8wb")
@@ -40,6 +44,16 @@ shape = SubResource("CapsuleShape2D_gi76f")
 [node name="DeteccaoShape" type="CollisionShape2D" parent="AreaDeteccao"]
 position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_2v8wb")
+
+[node name="Arma" type="Sprite2D" parent="."]
+position = Vector2(15, 70)
+texture = ExtResource("4_p7ykj")
+offset = Vector2(75, -51)
+
+[node name="Alcance" type="Area2D" parent="."]
+
+[node name="Alcanace" type="CollisionShape2D" parent="Alcance"]
+shape = SubResource("CircleShape2D_gi76f")
 
 [connection signal="body_entered" from="IrDeVala" to="." method="_on_ir_de_vala_body_entered"]
 [connection signal="body_entered" from="AreaDeteccao" to="." method="_on_area_deteccao_body_entered"]

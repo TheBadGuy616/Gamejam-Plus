@@ -73,3 +73,17 @@ func _on_hurtbox_body_entered(body: Node2D):
 		# A Pessoa é o nó raiz deste script, então basta chamar queue_free()
 		queue_free() 
 		# Alternativamente, chame uma função de morte: morrer()
+
+
+
+
+func _on_alcance_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		look_at(Player.position)
+		Timer.start
+		
+
+
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.

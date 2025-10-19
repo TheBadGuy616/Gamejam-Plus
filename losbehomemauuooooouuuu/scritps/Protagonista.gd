@@ -1,24 +1,30 @@
 class_name Player
 extends CharacterBody2D
 
-@export var speed = 800
+@export var speed = 2000
 @export var tempo = 10
 @export var pontos = 0
+@export var accel = 600
+@export var friction = 150
 
-var can_move = true	
 
-func get_input():
+var can_move = true
+
+
+func _physics_process(delta):
 	if can_move:
-		var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		velocity = input_direction * speed
-		print(velocity)
+		var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+		if direction != Vector2.ZERO:
+			velocity = velocity.move_toward(direction * speed, accel * delta)
+		else:
+			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	
 	else:
 		velocity.x = 0
 		velocity.y = 0
-
-func _physics_process(delta):
-	get_input()
 	move_and_slide()
+
 
 func _on_timer_timeout() -> void:
 	#get_tree().change_scene_to_file()

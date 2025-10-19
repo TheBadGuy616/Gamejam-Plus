@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dijaa05xvbfrd"]
+
+[node name="Inimigo" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Area Detecao" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area Detecao"]
