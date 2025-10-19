@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3vxxffyxcukl"]
+[gd_scene load_steps=11 format=3 uid="uid://d3vxxffyxcukl"]
 
 [ext_resource type="PackedScene" uid="uid://ci4s14t2b6obg" path="res://Cenario/trap.tscn" id="2_ab28t"]
 [ext_resource type="PackedScene" uid="uid://i7ep8pbh6mtj" path="res://Personagens/protagonista.tscn" id="2_ynais"]
@@ -7,6 +7,17 @@
 [ext_resource type="Script" uid="uid://xhatkcgcv06n" path="res://Personagens/spawn_manager.gd" id="5_50uir"]
 [ext_resource type="PackedScene" uid="uid://cllsantits3yt" path="res://Cenario/moita.tscn" id="6_vpr83"]
 [ext_resource type="Texture2D" uid="uid://co7im310h73kc" path="res://Cenario/chao2.png" id="7_qpinv"]
+[ext_resource type="Texture2D" uid="uid://0v6y52fl4fk4" path="res://Assets/arvore1.png" id="8_8edvk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8edvk"]
+texture = ExtResource("8_8edvk")
+texture_region_size = Vector2i(400, 800)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_56mdm"]
+physics_layer_0/collision_layer = 1
+sources/3 = SubResource("TileSetAtlasSource_8edvk")
 
 [node name="Cena teste" type="Node2D"]
 
@@ -64,5 +75,9 @@ position = Vector2(-1102, -1046)
 
 [node name="Pessoa4" parent="." instance=ExtResource("3_ynais")]
 position = Vector2(1653, 1436)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 38, 0, 14, 0, 2, 0, 0, 0, 0, 0, 0, 0, 29, 0, 219, 255, 2, 0, 0, 0, 0, 0, 0, 0, 199, 255, 225, 255, 2, 0, 0, 0, 0, 0, 0, 0, 198, 255, 46, 0, 2, 0, 0, 0, 0, 0, 0, 0, 25, 0, 20, 0, 3, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_56mdm")
 
 [connection signal="timeout" from="Spawn manager/SpawnTimer" to="Spawn manager" method="_on_spawn_timer_timeout"]
