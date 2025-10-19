@@ -1,11 +1,20 @@
-[gd_scene format=3 uid="uid://dijaa05xvbfrd"]
+[gd_scene load_steps=2 format=3 uid="uid://dijaa05xvbfrd"]
+
+[ext_resource type="Script" uid="uid://bu2y2fsg7wqkn" path="res://Base/inimigo.gd" id="1_v845p"]
 
 [node name="Inimigo" type="CharacterBody2D"]
+script = ExtResource("1_v845p")
+velocidade = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-[node name="Area Detecao" type="Area2D" parent="."]
+[node name="Area Deteccao" type="Area2D" parent="."]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area Detecao"]
+[node name="Area deteccao" type="CollisionShape2D" parent="Area Deteccao"]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

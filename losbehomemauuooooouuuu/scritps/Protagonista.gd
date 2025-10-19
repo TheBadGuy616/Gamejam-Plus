@@ -3,14 +3,14 @@ extends CharacterBody2D
 
 @export var base_speed = 500.0       # Velocidade base
 @export var speed_increase = 200.0    # Quanto a velocidade aumenta a cada nível
-@export var base_friction = 150.0       # Novo: Adicione a fricção base
+@export var base_friction = 200       # Novo: Adicione a fricção base
 @export var friction_increase = 50.0
 @export var nivel_limite = 5          # Quantos pontos para subir de nível
 
 @export var tempo = 10
 @export var pontos = 0
 @export var accel = 600
-@export var friction = 150
+@export var friction = 200
 
 var current_max_speed: float
 var last_checked_points: int = 0
@@ -26,20 +26,20 @@ func _ready():
 func _update_speed():
 	# 1. Calcula o novo nível com base nos pontos globais
 	var total_points = Globais.points
-	var novo_nivel = total_points / nivel_limite
+	var novo_nivel = int(total_points) / int(nivel_limite)
 	# 2. Verifica se o Lobisomem subiu de nível
 	if novo_nivel > current_level:
 		current_level = novo_nivel
 		
 		# 3. Calcula a nova velocidade
 	current_max_speed = base_speed + (float(current_level) * speed_increase)
-	print("Era: ", base_friction)
-	base_friction += friction_increase
-	print("Agr: " , base_friction)
+	#print("Era: ", base_friction)
+	base_friction = base_friction + (float(current_level) * friction_increase)
+	#print("Agr: " , base_friction)
 	
 		
-	print("Nível de Velocidade Aumentado! Novo nível: ", current_level)
-	print("Nova velocidade máxima (speed): ", current_max_speed)
+	#print("Nível de Velocidade Aumentado! Novo nível: ", current_level)
+	#print("Nova velocidade máxima (speed): ", current_max_speed)
 		
 		# (Opcional) Tocar som ou mostrar efeito visual de aceleração
 func _physics_process(delta):

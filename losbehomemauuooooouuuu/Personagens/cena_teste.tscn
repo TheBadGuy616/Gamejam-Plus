@@ -1,11 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3vxxffyxcukl"]
+[gd_scene load_steps=7 format=3 uid="uid://d3vxxffyxcukl"]
 
+[ext_resource type="Texture2D" uid="uid://co7im310h73kc" path="res://Cenario/chao2.png" id="1_vpr83"]
 [ext_resource type="PackedScene" uid="uid://ci4s14t2b6obg" path="res://Cenario/trap.tscn" id="2_ab28t"]
-[ext_resource type="PackedScene" path="res://Personagens/protagonista.tscn" id="2_ynais"]
+[ext_resource type="PackedScene" uid="uid://i7ep8pbh6mtj" path="res://Personagens/protagonista.tscn" id="2_ynais"]
 [ext_resource type="PackedScene" uid="uid://b855ws05qdikb" path="res://Personagens/pessoa.tscn" id="3_ynais"]
 [ext_resource type="PackedScene" uid="uid://dcrii0fiiwgx1" path="res://Personagens/hunter.tscn" id="4_q1lyw"]
+[ext_resource type="Script" uid="uid://xhatkcgcv06n" path="res://Personagens/spawn_manager.gd" id="5_50uir"]
 
 [node name="Cena teste" type="Node2D"]
+
+[node name="ParallaxBackground" type="Node2D" parent="."]
+scale = Vector2(10, 10)
+
+[node name="ParallaxLayer" type="Parallax2D" parent="ParallaxBackground"]
+repeat_size = Vector2(1, 1)
+ignore_camera_scroll = true
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+offset_left = -1024.0
+offset_top = -1042.0
+offset_right = 986.0
+offset_bottom = 958.0
+texture = ExtResource("1_vpr83")
+stretch_mode = 1
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+texture_filter = 1
+scale = Vector2(10, 10)
+autoscroll = Vector2(500, 500)
 
 [node name="Protagonista" parent="." instance=ExtResource("2_ynais")]
 position = Vector2(-202, 185)
@@ -13,8 +36,16 @@ position = Vector2(-202, 185)
 [node name="Trap" parent="." instance=ExtResource("2_ab28t")]
 position = Vector2(722, 189)
 
-[node name="Pessoa" parent="." instance=ExtResource("3_ynais")]
-position = Vector2(416, 1014)
+[node name="Spawn manager" type="Node" parent="." node_paths=PackedStringArray("player_node")]
+script = ExtResource("5_50uir")
+enemy_scenes = Array[PackedScene]([ExtResource("4_q1lyw"), ExtResource("3_ynais"), ExtResource("2_ab28t")])
+player_node = NodePath("../Protagonista")
+min_spawn_range = 1200
+max_spawn_range = 1500
 
-[node name="Hunter" parent="." instance=ExtResource("4_q1lyw")]
-position = Vector2(1968, 336)
+[node name="SpawnTimer" type="Timer" parent="Spawn manager"]
+process_callback = 0
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Spawn manager/SpawnTimer" to="Spawn manager" method="_on_spawn_timer_timeout"]
