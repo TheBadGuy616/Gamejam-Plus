@@ -11,6 +11,7 @@ class_name Hunter
 
 @onready var animacao_sprite = $AnimatedSprite2D
 @onready var animacao_arma = $PivoArma/AnimatedSprite2D_Arma
+@onready var som_disparo: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var em_fuga: bool = false
 var jogador_em_mira: bool = false
@@ -132,6 +133,7 @@ func executar_disparo():
 	
 	# 1. INICIA A ANIMAÇÃO DE TIRO
 	animacao_arma.play("Tiro")
+	som_disparo.play()
 
 	# 2. Lógica de Instanciação do Projétil (Tirada do seu _on_timer_tiros_timeout)
 	var bala = projectile_scene.instantiate()
