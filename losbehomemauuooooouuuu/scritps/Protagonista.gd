@@ -74,7 +74,8 @@ func _physics_process(delta):
 		velocity.y = 0
 	
 	if velocity.x != 0 or velocity.y != 0:
-		animacao_sprite.play("Walk")
+		if animacao_sprite.animation == "Matando" and not animacao_sprite.is_playing():
+			animacao_sprite.play("Walk")
 	if velocity.x != 0:
 		animacao_sprite.flip_h = velocity.x < 0
 	
