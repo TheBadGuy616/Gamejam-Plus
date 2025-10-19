@@ -7,10 +7,10 @@ class_name Pessoa # Define um nome de classe para facilitar a identificação
 @export var velocidade_ociosa: float = 0.0 # Movimento quando não vê o Lobisomem
 
 # --- Variáveis de Estado ---
-
 var em_fuga: bool = false
 var lobisomem_alvo: CharacterBody2D = null
 @onready var animacao_sprite = $AnimatedSprite2D
+
 # --- Função Principal de Lógica de Jogo ---
 
 func _physics_process(delta):
@@ -65,7 +65,14 @@ func _on_area_deteccao_body_exited(body: Node2D) -> void:
 
 func _on_ir_de_vala_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		if body.has_node("Sprite2D"):
+			var lobisomem_sprite = body.get_node("Sprite2D")
+			lobisomem_sprite.play("Matando")
+		await get_tree().process_frame
+		$CollisionPolygon2D.disabled = true
 		Globais.registrar_abate_e_pontos(1)
+		animacao_sprite.play("Morrendo")
+		await animacao_sprite.animation_finished
 		queue_free()
 
 func _on_hurtbox_body_entered(body: Node2D):

@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b855ws05qdikb"]
+[gd_scene load_steps=12 format=3 uid="uid://b855ws05qdikb"]
 
 [ext_resource type="Script" uid="uid://bmq6dus63p7af" path="res://scritps/Pessoa.gd" id="1_pfggf"]
 [ext_resource type="Texture2D" uid="uid://ckhl0njkauevo" path="res://Sprites/pessoa3.png" id="2_4n850"]
 [ext_resource type="Texture2D" uid="uid://ct2dwc1kmxecy" path="res://Sprites/pessoa1.png" id="2_5a7ko"]
 [ext_resource type="Texture2D" uid="uid://4lk4cqgliapj" path="res://Sprites/pessoa4.png" id="3_qlhj1"]
+[ext_resource type="Texture2D" uid="uid://cicb1ws5g7rf3" path="res://Assets/kill_garra1.png" id="4_6luja"]
+[ext_resource type="Texture2D" uid="uid://ct3k1pwadpbdv" path="res://Assets/kill_garra2.png" id="5_jlkth"]
+[ext_resource type="Texture2D" uid="uid://bf1xtv0lersfr" path="res://Assets/kill_garra3.png" id="6_qv48s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ii53p"]
 resource_name = "A"
@@ -18,6 +21,20 @@ animations = [{
 "loop": true,
 "name": &"Fugindo",
 "speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6luja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jlkth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qv48s")
+}],
+"loop": false,
+"name": &"Morrendo",
+"speed": 7.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -45,12 +62,12 @@ script = ExtResource("1_pfggf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ii53p")
-animation = &"Fugindo"
+animation = &"Morrendo"
 autoplay = "Parado"
-frame_progress = 0.76138395
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(15, 32.000004)
 scale = Vector2(1.2985715, 1.1066667)
 shape = SubResource("CapsuleShape2D_v5cb8")
@@ -63,7 +80,6 @@ position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_3rpey")
 
 [node name="IrDeVala" type="Area2D" parent="."]
-visible = false
 scale = Vector2(3.9200003, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IrDeVala"]

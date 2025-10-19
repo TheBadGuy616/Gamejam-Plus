@@ -74,7 +74,11 @@ func _on_alcance_body_exited(body: Node2D) -> void:
 
 func _on_ir_de_vala_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		await get_tree().process_frame
+		$CollisionShape2D.disabled = true
 		Globais.registrar_abate_e_pontos(3)
+		animacao_sprite.play("Morrendo")
+		await animacao_sprite.animation_finished
 		queue_free()
 
 func _on_hurtbox_body_entered(body: Node2D):
