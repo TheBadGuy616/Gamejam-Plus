@@ -49,7 +49,7 @@ func _update_speed():
 		current_level = novo_nivel
 		
 		# 3. Calcula a nova velocidade
-	current_max_speed = base_speed + (float(current_level) * speed_increase)
+	current_max_speed = (base_speed + (float(current_level) * speed_increase)) * current_speed_modifier
 	#print("Era: ", base_friction)
 	base_friction = base_friction + (float(current_level) * friction_increase)
 	#print("Agr: " , base_friction)
