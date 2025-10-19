@@ -7,6 +7,7 @@ func _ready():
 
 func update_points_label():
 	pontos.text = str(Globais.points)
+	Globais.points = 0
 	
 
 func _on_jogar_pressed() -> void:

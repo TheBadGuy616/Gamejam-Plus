@@ -138,9 +138,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -331.0
+offset_left = -341.0
 offset_top = -301.0
-offset_right = -149.0
+offset_right = -139.0
 offset_bottom = -245.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -152,6 +152,7 @@ theme_override_constants/separation = 50
 
 [node name="Jogar" type="Button" parent="Menus/VBoxContainer"]
 texture_filter = 1
+texture_repeat = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_mqc76")
 theme_override_font_sizes/font_size = 16
