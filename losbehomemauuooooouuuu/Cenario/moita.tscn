@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cllsantits3yt"]
+[gd_scene load_steps=6 format=3 uid="uid://cllsantits3yt"]
 
-[ext_resource type="Script" uid="uid://bn0xre4pyqmej" path="res://cENARIO/moita.gd" id="1_oh7ih"]
+[ext_resource type="Script" uid="uid://bn0xre4pyqmej" path="res://Cenario/moita.gd" id="1_oh7ih"]
 [ext_resource type="Texture2D" uid="uid://5jvdk6fd200q" path="res://Assets/arbusto1.png" id="2_hat5f"]
+[ext_resource type="Texture2D" uid="uid://bhpgsfyvj7fwx" path="res://Assets/arbusto2.png" id="3_qpcs2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kr7ww"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_hat5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qpcs2")
 }],
 "loop": true,
 "name": &"default",
@@ -15,7 +19,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kc5ik"]
-radius = 111.0
+radius = 115.50914
 
 [node name="moita" type="Node2D" groups=["Obstaculo"]]
 position = Vector2(4, -1)
@@ -23,9 +27,12 @@ scale = Vector2(2, 2)
 script = ExtResource("1_oh7ih")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(343.5, 163.5)
 sprite_frames = SubResource("SpriteFrames_kr7ww")
+frame_progress = 0.17660224
 
 [node name="Area2D" type="Area2D" parent="." groups=["Obstaculo"]]
+position = Vector2(343.5, 163.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(10, 32)
