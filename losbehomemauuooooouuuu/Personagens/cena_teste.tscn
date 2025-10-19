@@ -51,12 +51,18 @@ autostart = true
 wait_time = 30.0
 
 [node name="Pessoa" parent="." instance=ExtResource("3_ynais")]
-position = Vector2(-1223, 142)
+position = Vector2(-1715, 258)
 
 [node name="Pessoa2" parent="." instance=ExtResource("3_ynais")]
-position = Vector2(857, 120)
+position = Vector2(1600, -534)
 
 [node name="Protagonista" parent="." instance=ExtResource("2_ynais")]
 position = Vector2(-202, 185)
+
+[node name="Pessoa3" parent="." instance=ExtResource("3_ynais")]
+position = Vector2(-1102, -1046)
+
+[node name="Pessoa4" parent="." instance=ExtResource("3_ynais")]
+position = Vector2(1653, 1436)
 
 [connection signal="timeout" from="Spawn manager/SpawnTimer" to="Spawn manager" method="_on_spawn_timer_timeout"]
