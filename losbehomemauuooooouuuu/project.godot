@@ -17,12 +17,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+MusicaFundo="*res://Assets/musica_fundo.tscn"
 Globais="*res://scritps/Globais.gd"
 
 [display]
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
+window/size/resizable=false
 window/stretch/mode="viewport"
 
 [global_group]

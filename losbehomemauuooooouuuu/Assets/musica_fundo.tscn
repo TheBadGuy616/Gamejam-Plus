@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://wm827h18d61b"]
+
+[ext_resource type="AudioStream" uid="uid://b1unkpw2sp62w" path="res://Assets/elixir-of-life-9420.mp3" id="1_uaty0"]
+
+[node name="MusicaFundo" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_uaty0")
+autoplay = true
+stream_paused = true
