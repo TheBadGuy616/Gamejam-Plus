@@ -49,7 +49,7 @@ func _on_alcance_body_entered(body: Node2D) -> void:
 		print("DEBUG: Jogador ENTROU no Alcance.")
 		lobisomem_alvo = body
 		jogador_em_mira = true
-		em_fuga = false
+		em_fuga = true
 		timer_de_disparo.start()
 		print("DEBUG: Timer de Disparo INICIADO.")
 
@@ -73,7 +73,6 @@ func _on_hurtbox_body_entered(body: Node2D):
 		Globais.registrar_abate_e_pontos(1)
 		print(name, " detectou o Lobisomem. Instakill!")
 		queue_free()
-
 
 func _on_timer_tiros_timeout() -> void:
 	print("DEBUG: Timer TIMEOUT. Checando condições...")

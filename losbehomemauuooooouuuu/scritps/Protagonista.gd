@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var friction = 200
 @export var vida_label: Label
 @onready var vida_timer = $VidaTimer
+@onready var animacao_sprite = $Sprite2D
 var tempo_vida_inicial: float = 0.0
 
 var current_speed_modifier: float = 1.0
@@ -70,7 +71,13 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		velocity.y = 0
-		
+	
+	if velocity.x != 0 or velocity.y != 0:
+		animacao_sprite.play("Walk")
+	if velocity.x != 0:
+		animacao_sprite.flip_h = velocity.x < 0
+	
+	
 	move_and_slide()
 
 func _process(delta):
@@ -137,4 +144,4 @@ func _on_stun_timer_timeout():
 func _on_vida_timer_timeout():
 	print("O tempo acabou! Jogador Morreu.")
 	queue_free()
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://Interfaces/menuIniciar.tscn")
