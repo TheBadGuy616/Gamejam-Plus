@@ -10,7 +10,7 @@ class_name Pessoa # Define um nome de classe para facilitar a identificação
 
 var em_fuga: bool = false
 var lobisomem_alvo: CharacterBody2D = null
-
+@onready var animacao_sprite = $AnimatedSprite2D
 # --- Função Principal de Lógica de Jogo ---
 
 func _physics_process(delta):
@@ -27,6 +27,9 @@ func _physics_process(delta):
 		# O sinal de '-' inverte o vetor, garantindo que a Pessoa corra para o lado oposto.
 		direcao_movimento = -vetor_para_alvo.normalized()
 		velocidade_atual = velocidade_fuga
+		
+		if direcao_movimento.x != 0:
+			animacao_sprite.flip_h = direcao_movimento.x < 0
 	
 	# 2. Aplica o Movimento
 	
@@ -48,6 +51,7 @@ func _on_area_deteccao_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		lobisomem_alvo = body
 		em_fuga = true
+		animacao_sprite.play("Fugindo")
 		#print("Pessoa: Lobisomem detectado! Fugindo...")
 
 func _on_area_deteccao_body_exited(body: Node2D) -> void:
@@ -55,6 +59,7 @@ func _on_area_deteccao_body_exited(body: Node2D) -> void:
 	if body == lobisomem_alvo:
 		lobisomem_alvo = null
 		em_fuga = false
+		animacao_sprite.play("Parado")
 		#print("Pessoa: Seguro por enquanto. Parando de correr.")
 
 
