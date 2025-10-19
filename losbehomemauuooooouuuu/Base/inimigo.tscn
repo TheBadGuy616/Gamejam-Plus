@@ -4,7 +4,6 @@
 
 [node name="Inimigo" type="CharacterBody2D" groups=["Inimigos", "Ininimigos"]]
 script = ExtResource("1_v845p")
-velocidade = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

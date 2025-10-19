@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://di07spt8ge1rn"]
 
 [ext_resource type="Texture2D" uid="uid://c1r0kqc3otrf4" path="res://Sprites/placeHolders/WhatsApp Image 2025-10-18 at 07.52.49.jpeg" id="1_6nybr"]
-[ext_resource type="Script" uid="uid://cr3lnmw0r2ufe" path="res://Interfaces/menu_opcoes.gd" id="1_lxduh"]
+[ext_resource type="Script" uid="uid://cr3lnmw0r2ufe" path="res://scritps/menu_opcoes.gd" id="1_lxduh"]
 [ext_resource type="Texture2D" uid="uid://d4jct0nfnqhug" path="res://Sprites/placeHolders/LosbeHomem - Logo.png" id="2_lxduh"]
 [ext_resource type="FontFile" uid="uid://dfp886wjxurnh" path="res://Assets/Minecraftia-Regular.ttf" id="3_i8670"]
 [ext_resource type="Texture2D" uid="uid://53xikivf5fdd" path="res://Assets/ahahahhaha.png" id="5_dthnw"]

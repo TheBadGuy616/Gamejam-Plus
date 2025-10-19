@@ -1,14 +1,13 @@
 extends CharacterBody2D
 
 @export var velocidade: float = 300
-@export var wander_radius: int = 450 
+@export var wander_radius: int = 600 
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var wait_timer: Timer = $Timer 
 
 var start_position : Vector2
 var protagonista_ref = null
-
 
 func _ready() -> void:
 	start_position = global_position

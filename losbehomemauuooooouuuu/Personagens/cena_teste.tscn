@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3vxxffyxcukl"]
+[gd_scene load_steps=8 format=3 uid="uid://d3vxxffyxcukl"]
 
 [ext_resource type="PackedScene" uid="uid://ci4s14t2b6obg" path="res://Cenario/trap.tscn" id="2_ab28t"]
 [ext_resource type="PackedScene" uid="uid://i7ep8pbh6mtj" path="res://Personagens/protagonista.tscn" id="2_ynais"]
@@ -6,11 +6,34 @@
 [ext_resource type="PackedScene" uid="uid://dcrii0fiiwgx1" path="res://Personagens/hunter.tscn" id="4_q1lyw"]
 [ext_resource type="Script" uid="uid://xhatkcgcv06n" path="res://Personagens/spawn_manager.gd" id="5_50uir"]
 [ext_resource type="PackedScene" uid="uid://cllsantits3yt" path="res://Cenario/moita.tscn" id="6_vpr83"]
+[ext_resource type="Texture2D" uid="uid://co7im310h73kc" path="res://Cenario/chao2.png" id="7_qpinv"]
 
 [node name="Cena teste" type="Node2D"]
 
-[node name="Protagonista" parent="." instance=ExtResource("2_ynais")]
-position = Vector2(-202, 185)
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2000.0
+offset_bottom = 2000.0
+scale = Vector2(100, 100)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2096.96
+offset_top = -2021.44
+offset_right = -96.95996
+offset_bottom = -21.439941
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_qpinv")
+expand_mode = 3
+stretch_mode = 1
 
 [node name="Spawn manager" type="Node" parent="." node_paths=PackedStringArray("player_node")]
 script = ExtResource("5_50uir")
@@ -28,9 +51,18 @@ autostart = true
 wait_time = 30.0
 
 [node name="Pessoa" parent="." instance=ExtResource("3_ynais")]
-position = Vector2(-1223, 142)
+position = Vector2(-1715, 258)
 
 [node name="Pessoa2" parent="." instance=ExtResource("3_ynais")]
-position = Vector2(857, 120)
+position = Vector2(1600, -534)
+
+[node name="Protagonista" parent="." instance=ExtResource("2_ynais")]
+position = Vector2(-202, 185)
+
+[node name="Pessoa3" parent="." instance=ExtResource("3_ynais")]
+position = Vector2(-1102, -1046)
+
+[node name="Pessoa4" parent="." instance=ExtResource("3_ynais")]
+position = Vector2(1653, 1436)
 
 [connection signal="timeout" from="Spawn manager/SpawnTimer" to="Spawn manager" method="_on_spawn_timer_timeout"]
