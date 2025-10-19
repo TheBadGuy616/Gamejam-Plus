@@ -35,7 +35,7 @@ vida_label = NodePath("VidaLabel")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f8tt1")
 animation = &"Walk"
-frame_progress = 0.19891301
+frame_progress = 0.85712457
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -58,5 +58,9 @@ offset_right = 3232.0
 offset_bottom = -1510.0
 theme_override_fonts/font = ExtResource("3_8kssb")
 theme_override_font_sizes/font_size = 120
+
+[node name="PontosLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="timeout" from="VidaTimer" to="." method="_on_vida_timer_timeout"]
