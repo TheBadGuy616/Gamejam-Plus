@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://b1unkpw2sp62w" path="res://Assets/elixir-of-life-9420.mp3" id="1_uaty0"]
 
-[node name="MusicaFundo" type="AudioStreamPlayer2D"]
+[node name="MusicaFundo" type="AudioStreamPlayer"]
 stream = ExtResource("1_uaty0")
 autoplay = true
-stream_paused = true
+parameters/looping = true
