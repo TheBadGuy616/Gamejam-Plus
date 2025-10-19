@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var velocidade: float = 300
-@export var wander_radius: int = 450 
+@export var wander_radius: int = 600 
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var wait_timer: Timer = $Timer 

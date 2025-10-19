@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var friction = 200
 @export var vida_label: Label
 @onready var vida_timer = $VidaTimer
+@onready var pontos_label = $PontosLabel
 @onready var animacao_sprite = $Sprite2D
 var tempo_vida_inicial: float = 0.0
 
