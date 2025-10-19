@@ -1,0 +1,210 @@
+[gd_scene load_steps=8 format=3 uid="uid://crvtk317prqm"]
+
+[ext_resource type="FontFile" uid="uid://dfp886wjxurnh" path="res://Assets/Minecraftia-Regular.ttf" id="1_mqc76"]
+[ext_resource type="Script" uid="uid://bf4icvje253fg" path="res://scritps/pontuacao_final.gd" id="1_oqsq5"]
+[ext_resource type="Texture2D" uid="uid://4nvasa31x7ar" path="res://Assets/CANTOUPDATE.png" id="2_oqsq5"]
+[ext_resource type="Texture2D" uid="uid://6snnlci78lhb" path="res://Assets/detalheCoroa.png" id="3_vksqj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqsq5"]
+bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_offset = Vector2(3, 3)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vksqj"]
+bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="GDScript" id="GDScript_mf3j1"]
+script/source = "extends \"res://scritps/botaoMenu.gd\"
+"
+
+[node name="PontuacaoFinal" type="Control" node_paths=PackedStringArray("pontos")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oqsq5")
+pontos = NodePath("Panel/pontos")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -317.0
+offset_right = 450.0
+offset_bottom = 383.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+
+[node name="Pontuação" type="Label" parent="Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.99997
+offset_top = -76.66669
+offset_right = 137.0
+offset_bottom = -23.666687
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_mqc76")
+theme_override_font_sizes/font_size = 30
+text = "Pontuação Final"
+horizontal_alignment = 1
+
+[node name="pontos" type="Label" parent="Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.49994
+offset_top = -7.7778015
+offset_right = 144.50012
+offset_bottom = 45.2222
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_mqc76")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = -111.11113
+offset_top = 471.11115
+offset_right = 208.88887
+offset_bottom = 791.11115
+mouse_filter = 2
+texture = ExtResource("2_oqsq5")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 689.99963
+offset_top = 470.00012
+offset_right = 1009.99963
+offset_bottom = 790.0001
+texture = ExtResource("2_oqsq5")
+flip_h = true
+
+[node name="TextureRect3" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 690.0001
+offset_top = -90.0
+offset_right = 1010.0001
+offset_bottom = 230.0
+texture = ExtResource("2_oqsq5")
+flip_h = true
+flip_v = true
+
+[node name="TextureRect4" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = -110.000046
+offset_top = -90.0
+offset_right = 209.99995
+offset_bottom = 230.0
+texture = ExtResource("2_oqsq5")
+flip_v = true
+
+[node name="TextureRect5" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 144.4444
+offset_top = -83.33335
+offset_right = 784.4444
+offset_bottom = 236.66666
+texture = ExtResource("3_vksqj")
+
+[node name="Menus" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -331.0
+offset_top = -301.0
+offset_right = -149.0
+offset_bottom = -245.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.695, 2.695)
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Menus"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Jogar" type="Button" parent="Menus/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mqc76")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_oqsq5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oqsq5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vksqj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vksqj")
+text = "Jogar 
+Novamente"
+autowrap_trim_flags = 192
+script = SubResource("GDScript_mf3j1")
+
+[node name="ColorRect" type="ColorRect" parent="Menus/VBoxContainer/Jogar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0816307
+offset_top = 1.0
+offset_right = 6.9183655
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Opções" type="Button" parent="Menus/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_mqc76")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_oqsq5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oqsq5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vksqj")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vksqj")
+text = "Menu"
+script = SubResource("GDScript_mf3j1")
+
+[node name="ColorRect" type="ColorRect" parent="Menus/VBoxContainer/Opções"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.3395195
+offset_top = 1.0
+offset_right = 6.6642
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Menus/VBoxContainer/Jogar" to="." method="_on_jogar_pressed"]
+[connection signal="pressed" from="Menus/VBoxContainer/Opções" to="." method="_on_opções_pressed"]
