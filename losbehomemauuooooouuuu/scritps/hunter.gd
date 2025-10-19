@@ -11,6 +11,7 @@ class_name Hunter
 
 @onready var animacao_sprite = $AnimatedSprite2D
 @onready var animacao_arma = $PivoArma/AnimatedSprite2D_Arma
+@onready var som_disparo: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var em_fuga: bool = false
 var jogador_em_mira: bool = false
@@ -76,6 +77,9 @@ func _on_ir_de_vala_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		await get_tree().process_frame
 		$CollisionShape2D.disabled = true
+		if body.has_node("Sprite2D"):
+			var lobisomem_sprite = body.get_node("Sprite2D")
+			lobisomem_sprite.play("Matando")
 		Globais.registrar_abate_e_pontos(3)
 		animacao_sprite.play("Morrendo")
 		await animacao_sprite.animation_finished
@@ -129,6 +133,7 @@ func executar_disparo():
 	
 	# 1. INICIA A ANIMAÇÃO DE TIRO
 	animacao_arma.play("Tiro")
+	som_disparo.play()
 
 	# 2. Lógica de Instanciação do Projétil (Tirada do seu _on_timer_tiros_timeout)
 	var bala = projectile_scene.instantiate()

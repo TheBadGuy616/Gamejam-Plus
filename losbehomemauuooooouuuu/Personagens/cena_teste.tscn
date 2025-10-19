@@ -1,12 +1,24 @@
+<<<<<<< HEAD
 [gd_scene load_steps=11 format=3 uid="uid://d3vxxffyxcukl"]
+=======
+[gd_scene load_steps=16 format=3 uid="uid://d3vxxffyxcukl"]
+>>>>>>> 9fdaa5e384d2383e3914054842613c75f54c0507
 
+[ext_resource type="Script" uid="uid://b6md6cwaw8a1" path="res://scritps/cena_teste.gd" id="1_0348b"]
+[ext_resource type="AudioStream" uid="uid://df40cdfkib3de" path="res://Assets/UivoGeovani.wav" id="2_0ej3a"]
 [ext_resource type="PackedScene" uid="uid://ci4s14t2b6obg" path="res://Cenario/trap.tscn" id="2_ab28t"]
 [ext_resource type="PackedScene" uid="uid://i7ep8pbh6mtj" path="res://Personagens/protagonista.tscn" id="2_ynais"]
+[ext_resource type="AudioStream" uid="uid://dxevd2e7yca4t" path="res://Assets/UivoThiago.wav" id="3_3ipcq"]
 [ext_resource type="PackedScene" uid="uid://b855ws05qdikb" path="res://Personagens/pessoa.tscn" id="3_ynais"]
+[ext_resource type="AudioStream" uid="uid://b4ela8v3ra6ti" path="res://Assets/UivoFelipe.wav" id="4_civ35"]
 [ext_resource type="PackedScene" uid="uid://dcrii0fiiwgx1" path="res://Personagens/hunter.tscn" id="4_q1lyw"]
 [ext_resource type="Script" uid="uid://xhatkcgcv06n" path="res://Personagens/spawn_manager.gd" id="5_50uir"]
+[ext_resource type="AudioStream" uid="uid://b7j2vqhjd4hpr" path="res://Assets/UivoCarlo2.wav" id="5_bq1kg"]
+[ext_resource type="AudioStream" uid="uid://dfde7b85bak8e" path="res://Assets/UivoCarlo1.wav" id="6_4icil"]
 [ext_resource type="PackedScene" uid="uid://cllsantits3yt" path="res://Cenario/moita.tscn" id="6_vpr83"]
+[ext_resource type="AudioStream" uid="uid://cj6d82wl8rtfm" path="res://Assets/UivoAndrey.wav" id="7_i1wc1"]
 [ext_resource type="Texture2D" uid="uid://co7im310h73kc" path="res://Cenario/chao2.png" id="7_qpinv"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://0v6y52fl4fk4" path="res://Assets/arvore1.png" id="8_8edvk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8edvk"]
@@ -18,8 +30,13 @@ texture_region_size = Vector2i(400, 800)
 [sub_resource type="TileSet" id="TileSet_56mdm"]
 physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_8edvk")
+=======
+[ext_resource type="AudioStream" uid="uid://cnr2spc324nkg" path="res://Assets/AndréUivo.wav" id="8_4sceg"]
+>>>>>>> 9fdaa5e384d2383e3914054842613c75f54c0507
 
 [node name="Cena teste" type="Node2D"]
+script = ExtResource("1_0348b")
+audios = Array[AudioStream]([ExtResource("2_0ej3a"), ExtResource("3_3ipcq"), ExtResource("4_civ35"), ExtResource("5_bq1kg"), ExtResource("6_4icil"), ExtResource("7_i1wc1"), ExtResource("8_4sceg")])
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -76,8 +93,12 @@ position = Vector2(-1102, -1046)
 [node name="Pessoa4" parent="." instance=ExtResource("3_ynais")]
 position = Vector2(1653, 1436)
 
+<<<<<<< HEAD
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray(0, 0, 38, 0, 14, 0, 2, 0, 0, 0, 0, 0, 0, 0, 29, 0, 219, 255, 2, 0, 0, 0, 0, 0, 0, 0, 199, 255, 225, 255, 2, 0, 0, 0, 0, 0, 0, 0, 198, 255, 46, 0, 2, 0, 0, 0, 0, 0, 0, 0, 25, 0, 20, 0, 3, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_56mdm")
+=======
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+>>>>>>> 9fdaa5e384d2383e3914054842613c75f54c0507
 
 [connection signal="timeout" from="Spawn manager/SpawnTimer" to="Spawn manager" method="_on_spawn_timer_timeout"]

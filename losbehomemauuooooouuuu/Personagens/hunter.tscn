@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcrii0fiiwgx1"]
+[gd_scene load_steps=18 format=3 uid="uid://dcrii0fiiwgx1"]
 
 [ext_resource type="Script" uid="uid://bg6elgbhulbou" path="res://scritps/hunter.gd" id="1_2v8wb"]
 [ext_resource type="Texture2D" uid="uid://yt3pstvsqhkn" path="res://Sprites/cacador1.png" id="1_xloyb"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ct3k1pwadpbdv" path="res://Assets/kill_garra2.png" id="6_h86av"]
 [ext_resource type="Texture2D" uid="uid://d4f3sj7ep02m1" path="res://Sprites/arma2.png" id="7_dkmhg"]
 [ext_resource type="Texture2D" uid="uid://bf1xtv0lersfr" path="res://Assets/kill_garra3.png" id="7_jicjv"]
+[ext_resource type="AudioStream" uid="uid://bhyme36bw2ifn" path="res://Assets/762x54r Single Isolated MP3.mp3" id="11_h86av"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d8w1q"]
 animations = [{
@@ -133,6 +134,11 @@ offset = Vector2(75, -51)
 
 [node name="TimerDeDisparo" type="Timer" parent="."]
 wait_time = 4.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_h86av")
+volume_db = 24.0
+max_distance = 4096.0
 
 [connection signal="body_entered" from="IrDeVala" to="." method="_on_ir_de_vala_body_entered"]
 [connection signal="body_entered" from="AreaDeteccao" to="." method="_on_area_deteccao_body_entered"]
