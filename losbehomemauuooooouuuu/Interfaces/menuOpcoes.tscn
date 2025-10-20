@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://di07spt8ge1rn"]
+[gd_scene load_steps=26 format=3 uid="uid://di07spt8ge1rn"]
 
 [ext_resource type="Script" uid="uid://cr3lnmw0r2ufe" path="res://scritps/menu_opcoes.gd" id="1_lxduh"]
 [ext_resource type="Texture2D" uid="uid://d4jct0nfnqhug" path="res://Sprites/placeHolders/LosbeHomem - Logo.png" id="2_lxduh"]
@@ -51,9 +51,6 @@ bg_color = Color(0.09019608, 0.09019608, 0.09019608, 0.8627451)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_78xwj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mq5ak"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv3bh"]
-bg_color = Color(0.916497, 0.17871824, 0.9999998, 1)
 
 [node name="Opcoes" type="Control" node_paths=PackedStringArray("volume_slider", "percentage_label")]
 layout_mode = 3
@@ -274,7 +271,6 @@ offset_bottom = 346.44446
 theme_override_icons/grabber = ExtResource("5_dthnw")
 theme_override_icons/grabber_highlight = ExtResource("5_dthnw")
 theme_override_icons/grabber_disabled = ExtResource("5_dthnw")
-theme_override_styles/slider = SubResource("StyleBoxFlat_pv3bh")
 
 [node name="porcentagem" type="Label" parent="Panel"]
 layout_mode = 0
