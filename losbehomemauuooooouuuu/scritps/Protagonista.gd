@@ -18,6 +18,11 @@ extends CharacterBody2D
 @onready var atacando_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 var tempo_vida_inicial: float = 0.0
 
+@onready var drift_particles = $CPUParticles2D
+@export var drift_min_speed_factor: float = 0.5 # Mínimo de 50% da velocidade máxima para drifitar
+@export var drift_angle_threshold: float = 0.52 # ~30 graus em radianos
+var is_drifting = false
+
 var current_speed_modifier: float = 1.0
 var current_max_speed: float
 var last_checked_points: int = 0
@@ -63,6 +68,7 @@ func _update_speed():
 		# (Opcional) Tocar som ou mostrar efeito visual de aceleração
 func _physics_process(delta):
 	_update_speed()
+	var input_direction = Vector2.ZERO
 	if can_move:
 		var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
@@ -74,6 +80,43 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		velocity.y = 0
+	
+	var current_speed = velocity.length()
+	var drift_condition = false
+	
+	# Condição 1: Mudança de direção forte ou freio brusco em alta velocidade
+	if current_speed > current_max_speed * drift_min_speed_factor:
+		
+		# A. Drift ao tentar mudar de direção
+		if input_direction != Vector2.ZERO:
+			var angle_diff = abs(velocity.normalized().angle_to(input_direction))
+			if angle_diff > drift_angle_threshold:
+				drift_condition = true
+				
+		# B. Drift ao tentar frear (soltou o input)
+		elif input_direction == Vector2.ZERO:
+			# Verifica se a velocidade atual é significativamente maior que a fricção aplicada
+			# Isso garante que a detecção ocorra APENAS se estiver deslizando
+			if current_speed > friction * delta * 2: # *2 é uma margem para ajuste
+				drift_condition = true
+	
+	# Controla o estado e o efeito
+	if drift_condition and not is_drifting:
+		is_drifting = true
+		drift_particles.emitting = true 
+		# Opcional: Animação de "Drift" no sprite principal
+		# if animacao_sprite.animation != "Drift": animacao_sprite.play("Drift")
+		
+	elif not drift_condition and is_drifting:
+		is_drifting = false
+		drift_particles.emitting = false 
+		# Garante que ele volte para a animação "Walk" se o drift acabar
+		# if animacao_sprite.animation == "Drift": animacao_sprite.play("Walk")
+
+	# Opcional: Rotacionar as partículas para seguir o rastro de drift
+	if is_drifting and velocity.length_squared() > 0:
+		# Gira o nó de partículas para que o rastro fique perpendicular à direção do deslize
+		drift_particles.rotation = velocity.angle()
 	
 	if velocity.x != 0 or velocity.y != 0:
 		if animacao_sprite.animation == "Matando" and not animacao_sprite.is_playing():
