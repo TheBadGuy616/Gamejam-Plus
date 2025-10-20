@@ -12,6 +12,7 @@ extends Control
 var video_player: VideoStreamPlayer
 
 func _ready():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(0.5))
 	if not Globais.intro_ja_tocou:
 		# 1. É A PRIMEIRA VEZ: Esconde todos os nós da UI
 		for node in nodes_para_animar:
