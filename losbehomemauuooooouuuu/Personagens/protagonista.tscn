@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bs1p45y2mwume" path="res://Assets/lobisomem5.png" id="3_f8tt1"]
 [ext_resource type="Texture2D" uid="uid://bsjejekqnub5w" path="res://Assets/lobisomem3.png" id="4_md4yh"]
 [ext_resource type="AudioStream" uid="uid://boxo1ewspvkki" path="res://Assets/14_human_death_spin.mp3" id="8_f8tt1"]
-[ext_resource type="Texture2D" uid="uid://dwx8y6p2yp4ow" path="res://icon.svg" id="9_x4gy4"]
+[ext_resource type="Texture2D" uid="uid://c2grpi2y4smf8" path="res://Sprites/poeira.png" id="9_x4gy4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f8tt1"]
 animations = [{
@@ -83,7 +83,15 @@ stream = ExtResource("8_f8tt1")
 volume_db = 24.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 0.99215686, 0.75686276)
+position = Vector2(46, 61)
 emitting = false
+amount = 4
 texture = ExtResource("9_x4gy4")
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
 
 [connection signal="timeout" from="VidaTimer" to="." method="_on_vida_timer_timeout"]
