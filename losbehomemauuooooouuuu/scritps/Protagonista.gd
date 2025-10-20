@@ -52,21 +52,16 @@ func _update_speed():
 	# 1. Calcula o novo nível com base nos pontos globais
 	var total_points = Globais.points
 	var novo_nivel = int(total_points) / int(nivel_limite)
+	
 	# 2. Verifica se o Lobisomem subiu de nível
 	if novo_nivel > current_level:
 		current_level = novo_nivel
-		
-		# 3. Calcula a nova velocidade
-	current_max_speed = (base_speed + (float(current_level) * speed_increase)) * current_speed_modifier
-	#print("Era: ", base_friction)
-	base_friction = base_friction + (float(current_level) * friction_increase)
-	#print("Agr: " , base_friction)
+		musica_rapida()
 	
-		
-	#print("Nível de Velocidade Aumentado! Novo nível: ", current_level)
-	#print("Nova velocidade máxima (speed): ", current_max_speed)
-		
-		# (Opcional) Tocar som ou mostrar efeito visual de aceleração
+	# 3. Calcula nova velocidade
+	current_max_speed = (base_speed + (float(current_level) * speed_increase)) * current_speed_modifier
+	base_friction = base_friction + (float(current_level) * friction_increase)
+
 func _physics_process(delta):
 	_update_speed()
 	var input_direction = Vector2.ZERO
@@ -194,6 +189,9 @@ func _on_stun_timer_timeout():
 		
 func _on_vida_timer_timeout():
 	print("O tempo acabou! Jogador Morreu.")
+	var musica_global = get_node("/root/MusicaFundo")
+	if musica_global != null:
+		musica_global.pitch_scale = 1.0
 	queue_free()
 	get_tree().change_scene_to_file("res://Interfaces/pontuacaoFinal.tscn")
 
@@ -217,3 +215,8 @@ func aviso_timer():
 			aviso_tween = null
 			vida_label.scale = Vector2(1, 1)
 			vida_label.modulate = Color(1, 1, 1)
+
+func musica_rapida():
+	var musica_global = get_node("/root/MusicaFundo")
+	if musica_global != null and musica_global.is_playing():
+		musica_global.pitch_scale *= 1.1
