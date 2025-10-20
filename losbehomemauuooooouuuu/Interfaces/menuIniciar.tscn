@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ci2tgi1yo7lld" path="res://scritps/menu_iniciar.gd" id="1_x65mq"]
 [ext_resource type="Texture2D" uid="uid://dbgr0k1v116ds" path="res://Assets/pano.png" id="2_87rq4"]
 [ext_resource type="Texture2D" uid="uid://d4jct0nfnqhug" path="res://Sprites/placeHolders/LosbeHomem - Logo.png" id="2_fpcjo"]
-[ext_resource type="VideoStream" uid="uid://dsdsp4h0sh60c" path="res://Assets/agora-sim.ogv" id="2_u440h"]
+[ext_resource type="VideoStream" uid="uid://goa1x1sv8ah6" path="res://Assets/agora-sim (1).ogv" id="2_u440h"]
 [ext_resource type="FontFile" uid="uid://dfp886wjxurnh" path="res://Assets/Minecraftia-Regular.ttf" id="3_x65mq"]
 [ext_resource type="Script" uid="uid://bj6d1c1xytdq0" path="res://scritps/sair.gd" id="5_87rq4"]
 
@@ -33,6 +33,7 @@ grow_vertical = 2
 script = ExtResource("1_x65mq")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,6 +46,7 @@ autoplay = true
 loop = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
