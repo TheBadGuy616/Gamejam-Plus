@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://crvtk317prqm"]
+[gd_scene load_steps=10 format=3 uid="uid://crvtk317prqm"]
 
 [ext_resource type="FontFile" uid="uid://dfp886wjxurnh" path="res://Assets/Minecraftia-Regular.ttf" id="1_mqc76"]
 [ext_resource type="Script" uid="uid://bf4icvje253fg" path="res://scritps/pontuacao_final.gd" id="1_oqsq5"]
 [ext_resource type="Texture2D" uid="uid://4nvasa31x7ar" path="res://Assets/CANTOUPDATE.png" id="2_oqsq5"]
 [ext_resource type="Texture2D" uid="uid://6snnlci78lhb" path="res://Assets/detalheCoroa.png" id="3_vksqj"]
+[ext_resource type="Texture2D" uid="uid://dbgr0k1v116ds" path="res://Assets/pano.png" id="5_vksqj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf3j1"]
+bg_color = Color(0.09019608, 0.09019608, 0.09019608, 0.8627451)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqsq5"]
 bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
@@ -28,6 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
 script = ExtResource("1_oqsq5")
 pontos = NodePath("Panel/pontos")
 
@@ -38,13 +43,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -450.0
-offset_top = -317.0
-offset_right = 450.0
-offset_bottom = 383.0
+offset_left = -403.0
+offset_top = -323.0
+offset_right = 497.0
+offset_bottom = 377.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.9, 0.9)
+theme_override_styles/panel = SubResource("StyleBoxFlat_mf3j1")
 
 [node name="Pontuação" type="Label" parent="Panel"]
 z_index = 1
@@ -132,16 +138,17 @@ offset_bottom = 236.66666
 texture = ExtResource("3_vksqj")
 
 [node name="Menus" type="BoxContainer" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -341.0
-offset_top = -301.0
-offset_right = -139.0
-offset_bottom = -245.0
+offset_left = -294.0
+offset_top = -274.0
+offset_right = -92.0
+offset_bottom = -218.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(2.695, 2.695)
@@ -206,6 +213,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_vksqj")
+expand_mode = 3
 
 [connection signal="pressed" from="Menus/VBoxContainer/Jogar" to="." method="_on_jogar_pressed"]
 [connection signal="pressed" from="Menus/VBoxContainer/Opções" to="." method="_on_opções_pressed"]

@@ -1,17 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c72n7km8qre1u"]
+[gd_scene load_steps=9 format=3 uid="uid://c72n7km8qre1u"]
 
-[ext_resource type="Texture2D" uid="uid://c1r0kqc3otrf4" path="res://Sprites/placeHolders/WhatsApp Image 2025-10-18 at 07.52.49.jpeg" id="1_ri0ax"]
 [ext_resource type="Script" uid="uid://ci2tgi1yo7lld" path="res://scritps/menu_iniciar.gd" id="1_x65mq"]
-[ext_resource type="AudioStream" uid="uid://cnr2spc324nkg" path="res://Assets/AndréUivo.wav" id="2_3tglk"]
+[ext_resource type="Texture2D" uid="uid://dbgr0k1v116ds" path="res://Assets/pano.png" id="2_87rq4"]
 [ext_resource type="Texture2D" uid="uid://d4jct0nfnqhug" path="res://Sprites/placeHolders/LosbeHomem - Logo.png" id="2_fpcjo"]
-[ext_resource type="AudioStream" uid="uid://cj6d82wl8rtfm" path="res://Assets/UivoAndrey.wav" id="3_c5n8b"]
 [ext_resource type="FontFile" uid="uid://dfp886wjxurnh" path="res://Assets/Minecraftia-Regular.ttf" id="3_x65mq"]
-[ext_resource type="AudioStream" uid="uid://dfde7b85bak8e" path="res://Assets/UivoCarlo1.wav" id="4_hr6vf"]
-[ext_resource type="Script" path="res://scritps/sair.gd" id="5_87rq4"]
-[ext_resource type="AudioStream" uid="uid://b7j2vqhjd4hpr" path="res://Assets/UivoCarlo2.wav" id="5_hkv8e"]
-[ext_resource type="AudioStream" uid="uid://b4ela8v3ra6ti" path="res://Assets/UivoFelipe.wav" id="6_hxwe2"]
-[ext_resource type="AudioStream" uid="uid://dxevd2e7yca4t" path="res://Assets/UivoThiago.wav" id="7_5im4m"]
-[ext_resource type="AudioStream" uid="uid://df40cdfkib3de" path="res://Assets/UivoGeovani.wav" id="8_k4kus"]
+[ext_resource type="Script" uid="uid://bj6d1c1xytdq0" path="res://scritps/sair.gd" id="5_87rq4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x65mq"]
 bg_color = Color(0.1882353, 0.1882353, 0.1882353, 1)
@@ -37,18 +30,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x65mq")
-audios = Array[AudioStream]([ExtResource("2_3tglk"), ExtResource("3_c5n8b"), ExtResource("4_hr6vf"), ExtResource("5_hkv8e"), ExtResource("6_hxwe2"), ExtResource("7_5im4m"), ExtResource("8_k4kus")])
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 31.111084
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ri0ax")
+texture = ExtResource("2_87rq4")
 expand_mode = 3
 
 [node name="Logo" type="TextureRect" parent="."]
