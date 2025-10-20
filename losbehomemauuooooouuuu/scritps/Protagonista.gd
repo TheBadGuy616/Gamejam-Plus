@@ -29,6 +29,7 @@ var last_checked_points: int = 0
 var current_level: int = 0
 var can_move = true
 var atacando = false
+var aviso_tween: Tween
 
 func _ready():
 	# Inicializa a velocidade máxima com a velocidade base
@@ -136,6 +137,7 @@ func _process(delta):
 				vida_label.text = "0.00"
 		else:
 			vida_label.text = "%.3f" % vida_timer.time_left
+	aviso_timer()
 
 func receber_dano_tempo():
 	if vida_timer == null or (vida_timer.is_stopped() and vida_timer.time_left == 0.0):
@@ -194,3 +196,24 @@ func _on_vida_timer_timeout():
 	print("O tempo acabou! Jogador Morreu.")
 	queue_free()
 	get_tree().change_scene_to_file("res://Interfaces/pontuacaoFinal.tscn")
+
+func aviso_timer():
+	if vida_timer.time_left <= 5.5:
+		# Se ainda não existe tween ativo, cria um novo
+		if aviso_tween == null or not aviso_tween.is_valid():
+			aviso_tween = get_tree().create_tween()
+			aviso_tween.set_loops()
+			
+			# Cor avermelhada
+			aviso_tween.tween_property(vida_label, "modulate", Color(1, 0.2, 0.2), 0.3)
+			
+			# Efeito de pulso
+			aviso_tween.tween_property(vida_label, "scale", Vector2(1.75, 1.75), 0.3)
+			aviso_tween.tween_property(vida_label, "scale", Vector2(1.0, 1.0), 0.3)
+	else:
+		# Quando o tempo passa de 5.5, restaura o estado normal
+		if aviso_tween != null and aviso_tween.is_valid():
+			aviso_tween.kill()
+			aviso_tween = null
+			vida_label.scale = Vector2(1, 1)
+			vida_label.modulate = Color(1, 1, 1)
