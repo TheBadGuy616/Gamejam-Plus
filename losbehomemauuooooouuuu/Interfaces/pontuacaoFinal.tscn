@@ -69,7 +69,27 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_mqc76")
 theme_override_font_sizes/font_size = 30
-text = "Pontuação Final"
+text = "Pontuação Final:"
+horizontal_alignment = 1
+
+[node name="Recorde" type="Label" parent="Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.44437
+offset_top = 0.9442749
+offset_right = 219.55566
+offset_bottom = 53.944275
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_mqc76")
+theme_override_font_sizes/font_size = 30
+text = "Pontuação Recorde:"
 horizontal_alignment = 1
 
 [node name="pontos" type="Label" parent="Panel"]
@@ -80,16 +100,35 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -144.49994
-offset_top = -7.7778015
-offset_right = 144.50012
-offset_bottom = 45.2222
+offset_left = 163.33331
+offset_top = -77.77771
+offset_right = 452.33337
+offset_bottom = -24.77771
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_mqc76")
 theme_override_font_sizes/font_size = 30
-horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="maxpontos" type="Label" parent="Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 235.55579
+offset_top = 3.3333435
+offset_right = 524.5559
+offset_bottom = 56.333344
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_mqc76")
+theme_override_font_sizes/font_size = 30
+vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 layout_mode = 0
