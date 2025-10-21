@@ -6,9 +6,6 @@ extends Node2D
 func _ready() -> void:
 	play_random_audio()
 
-func _process(delta: float) -> void:
-	pass
-
 func play_random_audio():
 	if audios.size() == 0:
 		return

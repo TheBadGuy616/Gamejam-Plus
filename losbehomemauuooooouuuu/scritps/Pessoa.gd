@@ -13,7 +13,7 @@ var lobisomem_alvo: CharacterBody2D = null
 
 # --- Função Principal de Lógica de Jogo ---
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direcao_movimento = Vector2.ZERO
 	var velocidade_atual = velocidade_ociosa
 	

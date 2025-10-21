@@ -31,7 +31,6 @@ func _ready():
 	if enemy_scenes.is_empty():
 		print("Erro! Array 'Enemy Scenes' está vazio.")
 			
-	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	if difficulty_timer:
 		difficulty_timer.timeout.connect(increase_difficulty)
 

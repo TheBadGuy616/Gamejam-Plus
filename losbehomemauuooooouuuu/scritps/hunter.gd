@@ -18,11 +18,10 @@ var jogador_em_mira: bool = false
 var lobisomem_alvo: CharacterBody2D = null
 
 func _ready() -> void:
-	timer_de_disparo.timeout.connect(_on_timer_tiros_timeout)
 	animacao_arma.animation_finished.connect(_on_animacao_arma_finished)
 	animacao_arma.play("Normal")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direcao_movimento = Vector2.ZERO
 	var velocidade_atual = velocidade_ociosa
 	
@@ -52,7 +51,7 @@ func _on_area_deteccao_body_exited(body: Node2D) -> void:
 		em_fuga = false
 		jogador_em_mira = false 
 		timer_de_disparo.stop()
-		animacao_sprite.play("Normal")
+		animacao_sprite.play("parado")
 
 func _on_alcance_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
