@@ -1,6 +1,7 @@
 extends Node
 
 @export var points = 0
+@export var master_volume: float = 0.5 # 0.0 a 1.0
 var maxpontos = 0
 
 signal abate_registrado

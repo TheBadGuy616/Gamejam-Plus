@@ -14,18 +14,16 @@ func _ready():
 	volume_slider.max_value = 100.0
 	volume_slider.step = 1.0
 
-	var current_db = AudioServer.get_bus_volume_db(master_bus_index)
-	var current_linear = db_to_linear(current_db)
-	
-	volume_slider.value = current_linear * 100.0
+	volume_slider.value = Globais.master_volume * 100.0
+	AudioServer.set_bus_volume_db(master_bus_index, linear_to_db(Globais.master_volume))
 	
 	volume_slider.value_changed.connect(_on_volume_slider_value_changed)
-	
 	_update_percentage_label(volume_slider.value)
 
 
 func _on_volume_slider_value_changed(slider_value: float):
 	var linear_value = slider_value / 100.0
+	Globais.master_volume = linear_value
 	
 	var db
 	if linear_value == 0.0:
@@ -34,7 +32,6 @@ func _on_volume_slider_value_changed(slider_value: float):
 		db = linear_to_db(linear_value)
 	
 	AudioServer.set_bus_volume_db(master_bus_index, db)
-	
 	_update_percentage_label(slider_value)
 
 
