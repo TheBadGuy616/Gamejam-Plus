@@ -35,7 +35,6 @@ func _ready():
 	# Inicializa a velocidade máxima com a velocidade base
 	current_max_speed = base_speed
 	if vida_timer != null:
-		vida_timer.timeout.connect(_on_vida_timer_timeout)
 		tempo_vida_inicial = vida_timer.wait_time
 	else:
 		print("ERRO: Nó do Timer de Vida não encontrado no Player.")
@@ -56,6 +55,7 @@ func _update_speed():
 	# 2. Verifica se o Lobisomem subiu de nível
 	if novo_nivel > current_level:
 		current_level = novo_nivel
+		uivo_level_up()
 		musica_rapida()
 	
 	# 3. Calcula nova velocidade
@@ -125,7 +125,7 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func _process(delta):
+func _process(_delta):
 	if vida_label != null and vida_timer != null:
 		if vida_timer.is_stopped():
 			if vida_timer.time_left == 0.0:
@@ -192,6 +192,10 @@ func _on_vida_timer_timeout():
 	var musica_global = get_node("/root/MusicaFundo")
 	if musica_global != null:
 		musica_global.pitch_scale = 1.0
+	
+	call_deferred("_finalizar_morte")
+
+func _finalizar_morte():
 	queue_free()
 	get_tree().change_scene_to_file("res://Interfaces/pontuacaoFinal.tscn")
 
@@ -220,3 +224,8 @@ func musica_rapida():
 	var musica_global = get_node("/root/MusicaFundo")
 	if musica_global != null and musica_global.is_playing():
 		musica_global.pitch_scale *= 1.1
+
+func uivo_level_up():
+	var cena_teste = get_parent()
+	if cena_teste.has_method("play_random_audio"):
+		cena_teste.play_random_audio()
