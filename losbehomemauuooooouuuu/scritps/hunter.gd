@@ -38,6 +38,7 @@ func _physics_process(_delta):
 	
 	velocity = direcao_movimento * velocidade_atual
 	move_and_slide()
+	aviso_tiro()
 
 func _on_area_deteccao_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
@@ -151,3 +152,32 @@ func _on_animacao_arma_finished():
 	# Verifica se a animação que terminou é a de tiro (muito importante)
 	if animacao_arma.animation == "Tiro":
 		animacao_arma.play("Normal")
+
+func aviso_tiro():
+	var font_resource = FontFile.new()
+	var font_data = load("res://Assets/Minecraftia-Regular.ttf")
+	font_resource.font_data = font_data
+	
+	# Cria o aviso apenas se estiver perto do disparo e ainda não existir
+	if timer_de_disparo.time_left <= 1.0 and not has_node("aviso"):
+		var aviso = Label.new()
+		aviso.name = "aviso"
+		aviso.text = "!"
+		aviso.add_theme_font_size_override("font_size", 200)
+		aviso.add_theme_font_override("font", font_resource)
+		aviso.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		aviso.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		aviso.position = Vector2(0, -400) # aparece acima do Hunter (ajustável)
+		add_child(aviso)
+
+		# Tween que alterna cor de vermelho ↔ amarelo enquanto o aviso estiver ativo
+		var tween = create_tween()
+		tween.set_loops()
+		tween.tween_property(aviso, "modulate", Color(1, 1, 0), 0.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(aviso, "modulate", Color(1, 0, 0), 0.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+		# Remove o aviso quando o timer terminar (após o disparo)
+		timer_de_disparo.timeout.connect(func():
+			if aviso and aviso.is_inside_tree():
+				aviso.queue_free()
+		)
