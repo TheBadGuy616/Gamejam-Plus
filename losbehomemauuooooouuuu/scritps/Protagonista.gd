@@ -18,6 +18,10 @@ extends CharacterBody2D
 @onready var atacando_sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 var tempo_vida_inicial: float = 0.0
 
+@onready var camera = $Camera2D
+@onready var borda = $"../CanvasLayer/Borda"
+@export var texto_flutuante_scene: PackedScene
+
 @onready var drift_particles = $CPUParticles2D
 @export var drift_min_speed_factor: float = 0.5 # Mínimo de 50% da velocidade máxima para drifitar
 @export var drift_angle_threshold: float = 0.78 
@@ -57,6 +61,24 @@ func _update_speed():
 		current_level = novo_nivel
 		uivo_level_up()
 		musica_rapida()
+		if camera:
+			camera.start_pulse()
+		if borda:
+			borda.start_pulse(camera.pulse_duration)
+		# 1. Checagem de segurança
+		if texto_flutuante_scene == null:
+			print("ERRO: 'floating_text_scene' não foi definida no Inspetor do Player!")
+			return
+		# 2. Instanciar (criar uma cópia) da cena do texto
+		var floating_text = texto_flutuante_scene.instantiate()
+		# 3. Definir a posição inicial
+		# (Ajuste -30 para ficar perfeitamente acima da cabeça do seu sprite)
+		var spawn_position = global_position + Vector2(-250, -250)
+		# 4. Adicionar o texto ao mundo
+		# (get_parent() adiciona o texto à sua cena principal, como "irmão" do Player)
+		get_parent().add_child(floating_text)
+		# 5. Chamar a função 'setup' que criamos
+		floating_text.setup("Speed UP+", spawn_position, Color(0.83,0.06,0.06,1.0), self)
 	
 	# 3. Calcula nova velocidade
 	current_max_speed = (base_speed + (float(current_level) * speed_increase)) * current_speed_modifier

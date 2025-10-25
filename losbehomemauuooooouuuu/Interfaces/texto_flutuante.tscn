@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://blq6sq7cb2eo6"]
+
+[ext_resource type="FontFile" uid="uid://c2hr6681fmtc7" path="res://Assets/Minecrafter.Reg.ttf" id="1_p3omr"]
+[ext_resource type="Script" uid="uid://2o47skypitcn" path="res://Interfaces/texto_flutuante.gd" id="1_ums7l"]
+
+[node name="texto_flutuante" type="Node2D"]
+script = ExtResource("1_ums7l")
+
+[node name="TextLabel" type="Label" parent="."]
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.8392157, 0.0627451, 0.0627451, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_p3omr")
+theme_override_font_sizes/font_size = 72
+text = "Velocidade+"
+horizontal_alignment = 1
