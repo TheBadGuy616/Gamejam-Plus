@@ -1,28 +1,52 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3vxxffyxcukl"]
+[gd_scene load_steps=26 format=3 uid="uid://d3vxxffyxcukl"]
 
 [ext_resource type="Script" uid="uid://b6md6cwaw8a1" path="res://scritps/cena_teste.gd" id="1_0348b"]
-[ext_resource type="AudioStream" uid="uid://df40cdfkib3de" path="res://Assets/UivoGeovani.wav" id="2_0ej3a"]
-[ext_resource type="PackedScene" uid="uid://ci4s14t2b6obg" path="res://Cenario/trap.tscn" id="2_ab28t"]
+[ext_resource type="AudioStream" uid="uid://df40cdfkib3de" path="res://Assets/SFX/UivoGeovani.wav" id="2_0ej3a"]
+[ext_resource type="PackedScene" uid="uid://ci4s14t2b6obg" path="res://Assets/Sprites Fase/trap.tscn" id="2_ab28t"]
 [ext_resource type="PackedScene" uid="uid://i7ep8pbh6mtj" path="res://Personagens/protagonista.tscn" id="2_ynais"]
-[ext_resource type="AudioStream" uid="uid://dxevd2e7yca4t" path="res://Assets/UivoThiago.wav" id="3_3ipcq"]
+[ext_resource type="AudioStream" uid="uid://dxevd2e7yca4t" path="res://Assets/SFX/UivoThiago.wav" id="3_3ipcq"]
 [ext_resource type="PackedScene" uid="uid://b855ws05qdikb" path="res://Personagens/pessoa.tscn" id="3_ynais"]
-[ext_resource type="AudioStream" uid="uid://b4ela8v3ra6ti" path="res://Assets/UivoFelipe.wav" id="4_civ35"]
+[ext_resource type="AudioStream" uid="uid://b4ela8v3ra6ti" path="res://Assets/SFX/UivoFelipe.wav" id="4_civ35"]
 [ext_resource type="PackedScene" uid="uid://dcrii0fiiwgx1" path="res://Personagens/hunter.tscn" id="4_q1lyw"]
 [ext_resource type="Script" uid="uid://xhatkcgcv06n" path="res://Personagens/spawn_manager.gd" id="5_50uir"]
-[ext_resource type="AudioStream" uid="uid://b7j2vqhjd4hpr" path="res://Assets/UivoCarlo2.wav" id="5_bq1kg"]
-[ext_resource type="AudioStream" uid="uid://dfde7b85bak8e" path="res://Assets/UivoCarlo1.wav" id="6_4icil"]
-[ext_resource type="PackedScene" uid="uid://cllsantits3yt" path="res://Cenario/moita.tscn" id="6_vpr83"]
-[ext_resource type="AudioStream" uid="uid://cj6d82wl8rtfm" path="res://Assets/UivoAndrey.wav" id="7_i1wc1"]
-[ext_resource type="Texture2D" uid="uid://co7im310h73kc" path="res://Cenario/chao2.png" id="7_qpinv"]
-[ext_resource type="AudioStream" uid="uid://cnr2spc324nkg" path="res://Assets/AndréUivo.wav" id="8_4sceg"]
-[ext_resource type="Shader" uid="uid://dggkbhylkp340" path="res://Personagens/borda.gdshader" id="16_0ej3a"]
-[ext_resource type="Script" uid="uid://n1h3ohfwlwo3" path="res://Personagens/Borda.gd" id="17_3ipcq"]
+[ext_resource type="AudioStream" uid="uid://b7j2vqhjd4hpr" path="res://Assets/SFX/UivoCarlo2.wav" id="5_bq1kg"]
+[ext_resource type="AudioStream" uid="uid://dfde7b85bak8e" path="res://Assets/SFX/UivoCarlo1.wav" id="6_4icil"]
+[ext_resource type="PackedScene" uid="uid://cllsantits3yt" path="res://Assets/Sprites Fase/moita.tscn" id="6_vpr83"]
+[ext_resource type="AudioStream" uid="uid://cj6d82wl8rtfm" path="res://Assets/SFX/UivoAndrey.wav" id="7_i1wc1"]
+[ext_resource type="Texture2D" uid="uid://co7im310h73kc" path="res://Assets/Sprites Fase/chao2.png" id="7_qpinv"]
+[ext_resource type="AudioStream" uid="uid://cnr2spc324nkg" path="res://Assets/SFX/AndréUivo.wav" id="8_4sceg"]
+[ext_resource type="Shader" path="res://Personagens/borda.gdshader" id="16_0ej3a"]
+[ext_resource type="Script" path="res://Personagens/Borda.gd" id="17_3ipcq"]
+[ext_resource type="Texture2D" uid="uid://4t500vv8whh3" path="res://Assets/Sprites Fase/graminha.png" id="18_bq1kg"]
+[ext_resource type="Texture2D" uid="uid://dixw1lk2et88o" path="res://Assets/Sprites Fase/Sprite-0007.png" id="19_4icil"]
+
+[sub_resource type="Gradient" id="Gradient_3ipcq"]
+offsets = PackedFloat32Array(0.99333334, 1)
+colors = PackedColorArray(0.20392157, 0.31764707, 0.09411765, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_civ35"]
+gradient = SubResource("Gradient_3ipcq")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ipcq"]
 shader = ExtResource("16_0ej3a")
 shader_parameter/border_color = Color(1, 0, 0, 1)
 shader_parameter/hardness = 0.30000001425
 shader_parameter/fade_alpha = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i1wc1"]
+texture = ExtResource("18_bq1kg")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -4)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4sceg"]
+texture = ExtResource("19_4icil")
+1:0/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fje21"]
+sources/0 = SubResource("TileSetAtlasSource_i1wc1")
+sources/1 = SubResource("TileSetAtlasSource_4sceg")
 
 [node name="Cena teste" type="Node2D"]
 script = ExtResource("1_0348b")
@@ -36,6 +60,7 @@ offset_bottom = 2000.0
 scale = Vector2(100, 100)
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -50,6 +75,24 @@ offset_bottom = -21.439941
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_qpinv")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2096.96
+offset_top = -2021.44
+offset_right = -96.95996
+offset_bottom = -21.439941
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_civ35")
 expand_mode = 3
 stretch_mode = 1
 
@@ -95,5 +138,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("17_3ipcq")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = 1
+texture_filter = 3
+tile_set = SubResource("TileSet_fje21")
 
 [connection signal="timeout" from="Spawn manager/SpawnTimer" to="Spawn manager" method="_on_spawn_timer_timeout"]
