@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i7ep8pbh6mtj"]
+[gd_scene load_steps=16 format=3 uid="uid://i7ep8pbh6mtj"]
 
 [ext_resource type="Script" uid="uid://dpmkpwya36iba" path="res://scritps/Protagonista.gd" id="1_clmf5"]
 [ext_resource type="PackedScene" uid="uid://blq6sq7cb2eo6" path="res://Interfaces/texto_flutuante.tscn" id="2_8hjtw"]
@@ -54,6 +54,9 @@ animations = [{
 radius = 103.0
 height = 368.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hjtw"]
+size = Vector2(122.67999, 101.74)
+
 [node name="Protagonista" type="CharacterBody2D" node_paths=PackedStringArray("vida_label") groups=["Player"]]
 script = ExtResource("1_clmf5")
 base_speed = 600.0
@@ -66,9 +69,9 @@ animation = &"Walk"
 autoplay = "Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(32, 18.000002)
-rotation = 0.17453292
+rotation = 0.17453294
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CapsuleShape2D_clmf5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -110,4 +113,12 @@ initial_velocity_max = 50.0
 scale_amount_min = 5.0
 scale_amount_max = 10.0
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-3.8146973e-06, -1.9073486e-06)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(100, 80)
+shape = SubResource("RectangleShape2D_8hjtw")
+
 [connection signal="timeout" from="VidaTimer" to="." method="_on_vida_timer_timeout"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

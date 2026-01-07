@@ -223,3 +223,7 @@ func musica_rapida():
 func uivo_level_up():
 	var p = get_parent()
 	if p.has_method("play_random_audio"): p.play_random_audio()
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Inimigos") or body.is_in_group("Obstaculo"):
+		body.queue_free()

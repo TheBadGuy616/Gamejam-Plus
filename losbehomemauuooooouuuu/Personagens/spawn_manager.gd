@@ -23,16 +23,14 @@ extends Node
 @export var current_max_on_screen: int = 20
 
 func _ready():
+	difficulty_timer.start()
 	current_spawn_amount = initial_spawn_amount
 	current_max_on_screen = initial_max_on_screen
-	
-	if not player_node:
-		print("Erro! Nó do Jogador não definido.")
-	if enemy_scenes.is_empty():
-		print("Erro! Array 'Enemy Scenes' está vazio.")
-			
-	if difficulty_timer:
-		difficulty_timer.timeout.connect(increase_difficulty)
+
+	if player_node and player_node.has_signal("velocidade_aumentada"):
+		player_node.velocidade_aumentada.connect(increase_difficulty)
+	else:
+		print("SpawnManager: sinal velocidade_aumentada não encontrado no Player")
 
 func _on_spawn_timer_timeout():
 	
@@ -40,7 +38,6 @@ func _on_spawn_timer_timeout():
 
 	if current_enemy_count >= current_max_on_screen:
 		return
-		
 	var allowed_to_spawn = current_max_on_screen - current_enemy_count
 	var num_to_spawn = min(current_spawn_amount, allowed_to_spawn)
 
@@ -74,3 +71,9 @@ func increase_difficulty():
 	if current_max_on_screen < max_total_on_screen:
 		current_max_on_screen += increase_max_on_screen_amount
 		print("Novo limite de inimigos na tela: ", current_max_on_screen)
+	difficulty_timer.wait_time += 3
+	print("Novo tempo de aumentado da dificuldade: ", difficulty_timer.time_left)
+	difficulty_timer.start()
+
+func _on_difficulty_timer_timeout() -> void:
+	increase_difficulty()
