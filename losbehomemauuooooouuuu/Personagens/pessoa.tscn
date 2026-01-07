@@ -1,22 +1,42 @@
-[gd_scene load_steps=12 format=3 uid="uid://b855ws05qdikb"]
+[gd_scene load_steps=14 format=3 uid="uid://b855ws05qdikb"]
 
 [ext_resource type="Script" uid="uid://bmq6dus63p7af" path="res://scritps/Pessoa.gd" id="1_pfggf"]
-[ext_resource type="Texture2D" uid="uid://ckhl0njkauevo" path="res://Sprites/pessoa3.png" id="2_4n850"]
-[ext_resource type="Texture2D" uid="uid://ct2dwc1kmxecy" path="res://Sprites/pessoa1.png" id="2_5a7ko"]
-[ext_resource type="Texture2D" uid="uid://4lk4cqgliapj" path="res://Sprites/pessoa4.png" id="3_qlhj1"]
-[ext_resource type="Texture2D" uid="uid://cicb1ws5g7rf3" path="res://Assets/kill_garra1.png" id="4_6luja"]
-[ext_resource type="Texture2D" uid="uid://ct3k1pwadpbdv" path="res://Assets/kill_garra2.png" id="5_jlkth"]
-[ext_resource type="Texture2D" uid="uid://bf1xtv0lersfr" path="res://Assets/kill_garra3.png" id="6_qv48s"]
+[ext_resource type="Texture2D" uid="uid://k8w565txxaqr" path="res://Assets/Sprites Personagens/Vítimas/pessoa.png" id="2_v5cb8"]
+[ext_resource type="Texture2D" uid="uid://dodmtkgv1ipc" path="res://Assets/Sprites Personagens/LosbeHomem/kill_garra.png" id="3_4n850"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlhj1"]
+atlas = ExtResource("2_v5cb8")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii53p"]
+atlas = ExtResource("2_v5cb8")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6luja"]
+atlas = ExtResource("3_4n850")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlkth"]
+atlas = ExtResource("3_4n850")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv48s"]
+atlas = ExtResource("3_4n850")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7ge8"]
+atlas = ExtResource("2_v5cb8")
+region = Rect2(0, 0, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ii53p"]
 resource_name = "A"
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4n850")
+"texture": SubResource("AtlasTexture_qlhj1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_qlhj1")
+"texture": SubResource("AtlasTexture_ii53p")
 }],
 "loop": true,
 "name": &"Fugindo",
@@ -24,13 +44,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_6luja")
+"texture": SubResource("AtlasTexture_6luja")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_jlkth")
+"texture": SubResource("AtlasTexture_jlkth")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_qv48s")
+"texture": SubResource("AtlasTexture_qv48s")
 }],
 "loop": false,
 "name": &"Morrendo",
@@ -38,7 +58,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5a7ko")
+"texture": SubResource("AtlasTexture_y7ge8")
 }],
 "loop": true,
 "name": &"Parado",
@@ -62,10 +82,8 @@ script = ExtResource("1_pfggf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ii53p")
-animation = &"Morrendo"
+animation = &"Parado"
 autoplay = "Parado"
-frame = 2
-frame_progress = 1.0
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
 position = Vector2(15, 32.000004)
