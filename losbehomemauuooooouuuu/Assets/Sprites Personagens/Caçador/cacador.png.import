@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4lk4cqgliapj"
-path="res://.godot/imported/pessoa4.png-9c2a6c09e669c1b77cdb66f2fcf6dd78.ctex"
+uid="uid://di75fypkg6xn8"
+path="res://.godot/imported/cacador.png-7c549cf23f6011586b1ab8097bdefccf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites Personagens/Vítimas/pessoa4.png"
-dest_files=["res://.godot/imported/pessoa4.png-9c2a6c09e669c1b77cdb66f2fcf6dd78.ctex"]
+source_file="res://Assets/Sprites Personagens/Caçador/cacador.png"
+dest_files=["res://.godot/imported/cacador.png-7c549cf23f6011586b1ab8097bdefccf.ctex"]
 
 [params]
 

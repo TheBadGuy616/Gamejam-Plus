@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4jeiceskytu8"
-path="res://.godot/imported/lobisomem2.png-7efae55272e27a4bac401f3f34edf8c2.ctex"
+uid="uid://k8w565txxaqr"
+path="res://.godot/imported/pessoa.png-f894031535a11af453bb95e3bee76683.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites Personagens/LosbeHomem/lobisomem2.png"
-dest_files=["res://.godot/imported/lobisomem2.png-7efae55272e27a4bac401f3f34edf8c2.ctex"]
+source_file="res://Assets/Sprites Personagens/Vítimas/pessoa.png"
+dest_files=["res://.godot/imported/pessoa.png-f894031535a11af453bb95e3bee76683.ctex"]
 
 [params]
 

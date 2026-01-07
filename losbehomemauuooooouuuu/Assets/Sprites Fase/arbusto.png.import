@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsjejekqnub5w"
-path="res://.godot/imported/lobisomem3.png-20a24a27f36d04ea59e959367555d8bb.ctex"
+uid="uid://hbbesnhpsy1m"
+path="res://.godot/imported/arbusto.png-f6cd02277024d83b635cca10d5023d1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites Personagens/LosbeHomem/lobisomem3.png"
-dest_files=["res://.godot/imported/lobisomem3.png-20a24a27f36d04ea59e959367555d8bb.ctex"]
+source_file="res://Assets/Sprites Fase/arbusto.png"
+dest_files=["res://.godot/imported/arbusto.png-f6cd02277024d83b635cca10d5023d1d.ctex"]
 
 [params]
 
