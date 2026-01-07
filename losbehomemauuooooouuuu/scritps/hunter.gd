@@ -155,7 +155,7 @@ func _on_animacao_arma_finished():
 
 func aviso_tiro():
 	var font_resource = FontFile.new()
-	var font_data = load("res://Assets/Minecraftia-Regular.ttf")
+	var font_data = load("res://Assets/Elementos Menus/Minecraftia-Regular.ttf")
 	font_resource.font_data = font_data
 	
 	# Cria o aviso apenas se estiver perto do disparo e ainda não existir
