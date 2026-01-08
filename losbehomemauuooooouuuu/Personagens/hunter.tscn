@@ -1,25 +1,44 @@
-[gd_scene load_steps=18 format=3 uid="uid://dcrii0fiiwgx1"]
+[gd_scene load_steps=21 format=3 uid="uid://dcrii0fiiwgx1"]
 
 [ext_resource type="Script" uid="uid://bg6elgbhulbou" path="res://scritps/hunter.gd" id="1_2v8wb"]
-[ext_resource type="Texture2D" uid="uid://yt3pstvsqhkn" path="res://Sprites/cacador1.png" id="1_xloyb"]
 [ext_resource type="PackedScene" uid="uid://b25pn5fidyfbk" path="res://Personagens/bala.tscn" id="2_p7ykj"]
-[ext_resource type="Texture2D" uid="uid://d1dfm5wgo0teq" path="res://Sprites/cacador3.png" id="3_0tbwm"]
-[ext_resource type="Texture2D" uid="uid://y6xgiu5a3buh" path="res://Sprites/cacador4.png" id="4_dkmhg"]
-[ext_resource type="Texture2D" uid="uid://yhl5kemxgajc" path="res://Sprites/arma1.png" id="4_p7ykj"]
-[ext_resource type="Texture2D" uid="uid://cicb1ws5g7rf3" path="res://Assets/kill_garra1.png" id="5_fb0fd"]
-[ext_resource type="Texture2D" uid="uid://ct3k1pwadpbdv" path="res://Assets/kill_garra2.png" id="6_h86av"]
-[ext_resource type="Texture2D" uid="uid://d4f3sj7ep02m1" path="res://Sprites/arma2.png" id="7_dkmhg"]
-[ext_resource type="Texture2D" uid="uid://bf1xtv0lersfr" path="res://Assets/kill_garra3.png" id="7_jicjv"]
-[ext_resource type="AudioStream" uid="uid://bhyme36bw2ifn" path="res://Assets/762x54r Single Isolated MP3.mp3" id="11_h86av"]
+[ext_resource type="Texture2D" uid="uid://di75fypkg6xn8" path="res://Assets/Sprites Personagens/Caçador/cacador.png" id="3_gi76f"]
+[ext_resource type="Texture2D" uid="uid://dodmtkgv1ipc" path="res://Assets/Sprites Personagens/LosbeHomem/kill_garra.png" id="4_0tbwm"]
+[ext_resource type="Texture2D" uid="uid://e8bxfualvc1k" path="res://Assets/Sprites Personagens/Caçador/arma.png" id="5_0tbwm"]
+[ext_resource type="AudioStream" uid="uid://bhyme36bw2ifn" path="res://Assets/SFX/762x54r Single Isolated MP3.mp3" id="11_h86av"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkmhg"]
+atlas = ExtResource("3_gi76f")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8w1q"]
+atlas = ExtResource("3_gi76f")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6luja"]
+atlas = ExtResource("4_0tbwm")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlkth"]
+atlas = ExtResource("4_0tbwm")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv48s"]
+atlas = ExtResource("4_0tbwm")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iurfw"]
+atlas = ExtResource("3_gi76f")
+region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d8w1q"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_0tbwm")
+"texture": SubResource("AtlasTexture_dkmhg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dkmhg")
+"texture": SubResource("AtlasTexture_d8w1q")
 }],
 "loop": true,
 "name": &"Fugindo",
@@ -27,13 +46,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_fb0fd")
+"texture": SubResource("AtlasTexture_6luja")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_h86av")
+"texture": SubResource("AtlasTexture_jlkth")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_jicjv")
+"texture": SubResource("AtlasTexture_qv48s")
 }],
 "loop": false,
 "name": &"Morrendo",
@@ -41,7 +60,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_xloyb")
+"texture": SubResource("AtlasTexture_iurfw")
 }],
 "loop": true,
 "name": &"parado",
@@ -49,24 +68,32 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p7ykj"]
-radius = 70.161285
-height = 208.0
+radius = 7.2580643
+height = 23.529406
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gi76f"]
-radius = 496.14777
-height = 992.29553
+radius = 47.923367
+height = 112.76086
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2v8wb"]
-radius = 634.20184
+radius = 161.11176
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gi76f"]
-radius = 2423.2979
+radius = 675.3073
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb0fd"]
+atlas = ExtResource("5_0tbwm")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h86av"]
+atlas = ExtResource("5_0tbwm")
+region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iurfw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_p7ykj")
+"texture": SubResource("AtlasTexture_fb0fd")
 }],
 "loop": true,
 "name": &"Normal",
@@ -74,10 +101,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_dkmhg")
+"texture": SubResource("AtlasTexture_fb0fd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_p7ykj")
+"texture": SubResource("AtlasTexture_h86av")
 }],
 "loop": false,
 "name": &"Tiro",
@@ -90,24 +117,24 @@ projectile_scene = ExtResource("2_p7ykj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_d8w1q")
-animation = &"Morrendo"
+animation = &"Fugindo"
 autoplay = "parado"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(17.000002, 42)
+position = Vector2(1.9999998, 2)
 scale = Vector2(1.2400001, 1.3600004)
 shape = SubResource("CapsuleShape2D_p7ykj")
 
 [node name="IrDeVala" type="Area2D" parent="."]
-visible = false
 scale = Vector2(3.9200003, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IrDeVala"]
-position = Vector2(3.8265305, 31)
+position = Vector2(0.51020396, 1)
 scale = Vector2(0.09049311, 0.3564177)
 shape = SubResource("CapsuleShape2D_gi76f")
 
 [node name="AreaDeteccao" type="Area2D" parent="."]
+visible = false
 
 [node name="DeteccaoShape" type="CollisionShape2D" parent="AreaDeteccao"]
 position = Vector2(3, 0)
@@ -122,12 +149,10 @@ shape = SubResource("CircleShape2D_gi76f")
 [node name="PivoArma" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D_Arma" type="AnimatedSprite2D" parent="PivoArma"]
-position = Vector2(15, 70)
+position = Vector2(-68, 54)
 sprite_frames = SubResource("SpriteFrames_iurfw")
 animation = &"Tiro"
 autoplay = "Normal"
-frame = 1
-frame_progress = 1.0
 offset = Vector2(75, -51)
 
 [node name="PontoDeDisparo" type="Marker2D" parent="PivoArma"]

@@ -1,9 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://i7ep8pbh6mtj"]
+[gd_scene load_steps=13 format=3 uid="uid://i7ep8pbh6mtj"]
 
 [ext_resource type="Script" uid="uid://dpmkpwya36iba" path="res://scritps/Protagonista.gd" id="1_clmf5"]
 [ext_resource type="PackedScene" uid="uid://blq6sq7cb2eo6" path="res://Interfaces/texto_flutuante.tscn" id="2_8hjtw"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites Personagens/LosbeHomem/lobisomem4.png" id="2_md4yh"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites Personagens/LosbeHomem/lobisomem5.png" id="3_f8tt1"]
 [ext_resource type="Texture2D" uid="uid://buyaxujer62ud" path="res://Assets/Sprites Personagens/LosbeHomem/lobisomem.png" id="5_x4gy4"]
 [ext_resource type="Script" uid="uid://b00itaoyf1kg6" path="res://Personagens/camera_pulse.gd" id="7_7sl86"]
 [ext_resource type="FontFile" uid="uid://c2hr6681fmtc7" path="res://Assets/Elementos Menus/Minecrafter.Reg.ttf" id="7_x4gy4"]
@@ -26,10 +24,10 @@ region = Rect2(80, 0, 40, 40)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_md4yh")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_f8tt1")
+"texture": null
 }],
 "loop": false,
 "name": &"Matando",
@@ -51,8 +49,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_clmf5"]
-radius = 103.0
-height = 368.0
+radius = 14.308255
+height = 39.15918
 
 [node name="Protagonista" type="CharacterBody2D" node_paths=PackedStringArray("vida_label") groups=["Player"]]
 script = ExtResource("1_clmf5")
@@ -66,9 +64,8 @@ animation = &"Walk"
 autoplay = "Walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(32, 18.000002)
-rotation = 0.17453292
+position = Vector2(4.0000005, 1.0000001)
+rotation = 0.08726646
 shape = SubResource("CapsuleShape2D_clmf5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
