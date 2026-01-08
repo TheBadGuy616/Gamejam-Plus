@@ -3,15 +3,15 @@ extends CharacterBody2D
 
 # --- CONFIGURAÇÕES DE MOVIMENTAÇÃO ---
 @export_group("Movimentação Base")
-@export var base_speed: float = 650.0  # Velocidade inicial
-@export var accel: float = 700.0       # Aceleração inicial
+@export var base_speed: float = 65.0  # Velocidade inicial
+@export var accel: float = 70.0       # Aceleração inicial
 @export var friction: float = 200.0    # Fricção FIXA (Isso faz ele escorregar nos niveis altos)
 
 @export_group("Progressão (Level Up)")
 @export var nivel_limite: int = 5         # Pontos necessários para subir de nível
 # DICA: Como agora usamos curva, talvez você queira aumentar um pouco esses valores abaixo no Inspector
-@export var speed_increase: float = 225.0 # Bônus base de velocidade
-@export var accel_increase: float = 125.0 # Bônus base de aceleração
+@export var speed_increase: float = 22.5 # Bônus base de velocidade
+@export var accel_increase: float = 12.5 # Bônus base de aceleração
 
 @export_group("Drift / Deslize")
 @export var drift_min_speed_factor: float = 0.5

@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var velocidade_bala: float = 600.0
+@export var velocidade_bala: float = 60.0
 @export var tempo_vida: float = 3.0
 
 var direcao: Vector2 = Vector2.RIGHT

@@ -1,46 +1,48 @@
 extends Camera2D
 
-@export var pulse_strength: float = 1.3  # Quão forte é o pulso (1.0 = sem pulso, 1.2 = 20% zoom in)
-@export var pulse_duration: float = 0.4 # Duração de cada fase (ida e volta)
+# --- CONFIGURAÇÕES DE CÂMERA ---
+@export_group("Configuração de Zoom")
+@export var zoom_inicial: float = 2.5 # Aumente esse valor para aproximar (tente 3.0, 4.0 ou 5.0)
 
-var original_zoom: Vector2   # Para guardar o zoom original
-var current_tween: Tween   # Para controlar a animação atual
+@export_group("Efeito de Pulso (Level Up)")
+@export var pulse_strength: float = 1.3  # Quão forte é o pulso (multiplicador do zoom atual)
+@export var pulse_duration: float = 0.4 
 
-# Called when the node enters the scene tree for the first time.
+var original_zoom: Vector2   # Para guardar o zoom base
+var current_tween: Tween     # Para controlar a animação atual
+
 func _ready() -> void:
-	# Salva o zoom inicial da câmera assim que o jogo começa
+	# APLICA O ZOOM INICIAL
+	# Isso garante que a câmera comece perto o suficiente dos sprites novos
+	zoom = Vector2(zoom_inicial, zoom_inicial)
+	
+	# Salva esse novo zoom como o "original" para o efeito de pulso voltar pra cá depois
 	original_zoom = zoom
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func start_pulse():
 	# 1. Parar qualquer pulso anterior
-	# Se um pulso já estiver acontecendo, pare-o e volte ao normal.
-	# Isso evita que múltiplos pulsos "empilhem" e quebrem o zoom.
 	if current_tween and current_tween.is_running():
-		current_tween.kill() # Para a animação
+		current_tween.kill()
 		zoom = original_zoom # Restaura o zoom imediatamente
 
 	# 2. Criar um novo Tween
 	current_tween = create_tween()
 
-	# 3. Definir o zoom "pulsado" (mais próximo)
+	# 3. Definir o zoom "pulsado" (AINDA MAIS próximo que o zoom inicial)
 	var pulsed_zoom: Vector2 = original_zoom * pulse_strength
 
-	# 4. Animar a "ida" (Zoom In)
-	# Anima a propriedade "zoom" DE SEU VALOR ATUAL para "pulsed_zoom"
+	# 4. Anima a "ida" (Zoom In)
 	current_tween.tween_property(
-		self,                # O nó a animar (a própria câmera)
-		"zoom",              # A propriedade a animar
-		pulsed_zoom,         # O valor final (zoom "in")
-		pulse_duration       # A duração
-	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT) # Efeito de "suavização"
+		self, 
+		"zoom", 
+		pulsed_zoom, 
+		pulse_duration
+	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-	# 5. Animar a "volta" (Zoom Out)
-	# O Tween automaticamente coloca esta animação *depois* da anterior.
+	# 5. Anima a "volta" (Zoom Out para o zoom inicial)
 	current_tween.tween_property(
-		self,                # O nó a animar
-		"zoom",              # A propriedade a animar
-		original_zoom,       # O valor final (volta ao original)
-		pulse_duration       # A duração
-	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN) # Efeito de "suavização"
+		self, 
+		"zoom", 
+		original_zoom, 
+		pulse_duration
+	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
