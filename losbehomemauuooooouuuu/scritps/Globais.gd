@@ -5,6 +5,8 @@ extends Node
 var maxpontos = 0
 signal abate_registrado
 var intro_ja_tocou: bool = false
+var tentativas = 1
+var take = 1
 
 const PASTA_JOGO := "Losbehomen"
 const ARQUIVO_RECORDE := "recorde.json"

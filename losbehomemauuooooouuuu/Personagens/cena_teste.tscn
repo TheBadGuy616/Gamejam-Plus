@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d3vxxffyxcukl"]
+[gd_scene load_steps=28 format=3 uid="uid://d3vxxffyxcukl"]
 
 [ext_resource type="Script" uid="uid://b6md6cwaw8a1" path="res://scritps/cena_teste.gd" id="1_0348b"]
 [ext_resource type="AudioStream" uid="uid://df40cdfkib3de" path="res://Assets/SFX/UivoGeovani.wav" id="2_0ej3a"]
@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://cj6d82wl8rtfm" path="res://Assets/SFX/UivoAndrey.wav" id="7_i1wc1"]
 [ext_resource type="Texture2D" uid="uid://co7im310h73kc" path="res://Assets/Sprites Fase/chao2.png" id="7_qpinv"]
 [ext_resource type="AudioStream" uid="uid://cnr2spc324nkg" path="res://Assets/SFX/AndréUivo.wav" id="8_4sceg"]
+[ext_resource type="PackedScene" uid="uid://dvwc1m5t3ktmm" path="res://Interfaces/troca_de_fase.tscn" id="9_4icil"]
+[ext_resource type="PackedScene" uid="uid://di07spt8ge1rn" path="res://Interfaces/menuOpcoes.tscn" id="10_i1wc1"]
 [ext_resource type="Shader" uid="uid://dggkbhylkp340" path="res://Personagens/borda.gdshader" id="16_0ej3a"]
 [ext_resource type="Script" uid="uid://n1h3ohfwlwo3" path="res://Personagens/Borda.gd" id="17_3ipcq"]
 [ext_resource type="Texture2D" uid="uid://4t500vv8whh3" path="res://Assets/Sprites Fase/graminha.png" id="18_bq1kg"]
@@ -51,6 +53,8 @@ sources/1 = SubResource("TileSetAtlasSource_4sceg")
 [node name="Cena teste" type="Node2D"]
 script = ExtResource("1_0348b")
 audios = Array[AudioStream]([ExtResource("2_0ej3a"), ExtResource("3_3ipcq"), ExtResource("4_civ35"), ExtResource("5_bq1kg"), ExtResource("6_4icil"), ExtResource("7_i1wc1"), ExtResource("8_4sceg")])
+cena_transicao = ExtResource("9_4icil")
+proxima_fase = ExtResource("10_i1wc1")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
